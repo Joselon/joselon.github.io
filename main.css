@@ -58,11 +58,11 @@ body {
   
 
 @keyframes bordecolorchange {
-    0% {border-color: black;
+    0% {border-color: red;
     opacity:1;}
     50% {border-color: #7ebd0b;
-    opacity:0.5}
-    100%{border-color:black;
+    opacity:0}
+    100%{border-color:yellow;
     opacity:1}
   }
 
