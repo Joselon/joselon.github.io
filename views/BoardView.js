@@ -31,35 +31,19 @@ export class BoardView {
         document.getElementById("boardDiv").appendChild(grid);
     }
 
- 
     isFinished(){
-        if(this.#board.isFinished()){
-          this.removeAnimation();
-        }
        return this.#board.isFinished();
     }
     isWinner(){
-        if(this.#board.isWinner()){
-          this.removeAnimation();
-        }
         return this.#board.isWinner();
     }
 
     addUpdateListener(onUpdate) {
-       // console.log(document.getElementById("grid").childNodes);
         document.querySelectorAll(".first-row").forEach((headElement, column) => {
-          headElement.classList.add("animated-cell");
-          headElement.style.animationDelay=`${column}s`;
           headElement.addEventListener('click', () => {
-            onUpdate(column);
-          });
-        });
+            onUpdate(column)
+          })
+        })
       }
-      
-    removeAnimation(){
-        document.querySelectorAll(".animated-cell").forEach((headElement, column) => {
-            headElement.classList.remove("animated-cell");
-        }); 
-    }
 
 }

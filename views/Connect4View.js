@@ -17,7 +17,7 @@ export class Connect4View {
     }
 
     #init(){
-        new NumPlayersDialog((numberOfHumanPlayers) => {
+        new NumPlayersDialog("dialogDiv",(numberOfHumanPlayers) => {
             this.numberOfHumanPlayers=numberOfHumanPlayers;
             this.#connect4=new Connect4();
             this.#boardView = new BoardView(this.#connect4.getBoard());
@@ -52,7 +52,7 @@ export class Connect4View {
           this.#turnView.getActivePlayer().accept(this)
         } else {
           this.#turnView.renderResults()
-          new ResumeDialog(() => {
+          new ResumeDialog("dialogDiv",() => {
             this.clearDivs();
             this.#init();
           });
@@ -60,6 +60,7 @@ export class Connect4View {
       }
     clearDivs(){
       document.getElementById("infoDiv").innerHTML="";
+      document.getElementById("infoDiv").style.display="none";
       document.getElementById("turnDiv").innerHTML="";
       const boardDiv=document.getElementById("boardDiv");
       boardDiv.removeChild(boardDiv.firstElementChild);
