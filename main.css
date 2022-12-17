@@ -1,6 +1,6 @@
 body {
     background-image: url("./image/iStock-1092139474.jpg");
-    background-repeat: no-repeat;
+  /*  background-repeat: no-repeat;*/
     background-size: cover;
     text-align:center; 
    }
@@ -38,7 +38,6 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     transform: rotate(90deg);
-
 }
 
 .animated {
@@ -51,12 +50,27 @@ body {
     50% {background-color: #7ebd0b;}
     100%{background-color:transparent;}
   }
+  
+.animated-cell {
+    animation:
+    bordecolorchange 6s linear infinite;
+} 
+  
+
+@keyframes bordecolorchange {
+    0% {border-color: black;
+    opacity:1;}
+    50% {border-color: #7ebd0b;
+    opacity:0.5}
+    100%{border-color:black;
+    opacity:1}
+  }
 
 #buttonsId button {
     margin:1%;
 }
 
-#dialogDiv, #infoDiv,nav{
+#dialogDiv, #infoDiv,nav,footer{
     border:1px white solid;
     border-radius:25px;
     padding:1%;
@@ -71,4 +85,13 @@ body {
 nav {
     background-color: black;
     color:white;
+}
+
+footer {
+  position: sticky;
+  left: 0;
+  bottom: 0;
+  background: #0005;
+  color:white;
+  margin-top:5%;
 }
