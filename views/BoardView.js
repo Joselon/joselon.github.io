@@ -32,18 +32,31 @@ export class BoardView {
     }
 
     isFinished(){
+        if(this.#board.isFinished()){
+            this.removeAnimation();
+          }
        return this.#board.isFinished();
     }
     isWinner(){
+        if(this.#board.isWinner()){
+            this.removeAnimation();
+          }
         return this.#board.isWinner();
     }
 
     addUpdateListener(onUpdate) {
         document.querySelectorAll(".first-row").forEach((headElement, column) => {
-          headElement.addEventListener('click', () => {
+            headElement.classList.add("animated-cell");
+            headElement.style.animationDelay=`${column}s`;
+            headElement.addEventListener('click', () => {
             onUpdate(column)
           })
         })
       }
+    removeAnimation(){
+        document.querySelectorAll(".animated-cell").forEach((headElement, column) => {
+            headElement.classList.remove("animated-cell");
+        }); 
+    }
 
 }
