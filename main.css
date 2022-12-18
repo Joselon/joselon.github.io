@@ -53,16 +53,16 @@ body {
   
 .animated-cell {
     animation:
-    bordecolorchange 6s linear infinite;
+    bordecolorchange 6s linear 0s 2 alternate;
 } 
   
 
 @keyframes bordecolorchange {
     0% {border-color: red;
     opacity:1;}
-    50% {border-color: #7ebd0b;
+    50% {border-color: yellow;
     opacity:0}
-    100%{border-color:yellow;
+    100%{border-color:black;
     opacity:1}
   }
 
