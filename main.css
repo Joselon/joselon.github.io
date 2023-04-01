@@ -1,6 +1,5 @@
 body {
-    background-image: url("./image/iStock-1092139474.jpg");
-  /*  background-repeat: no-repeat;*/
+    background: radial-gradient(grey, black);
     background-size: cover;
     text-align:center; 
    }
