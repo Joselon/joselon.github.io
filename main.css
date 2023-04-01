@@ -1,6 +1,7 @@
 body {
     background: radial-gradient(grey, black);
     background-size: cover;
+    background-repeat: no-repeat;
     text-align:center; 
    }
 
