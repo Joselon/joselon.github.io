@@ -3,14 +3,14 @@
 // that they need an Internet connection to run the project if desired.
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
-const CACHE_VERSION = "1686659086|8640917439";
+const CACHE_VERSION = "1686679463|550311563";
 const CACHE_PREFIX = "TutorialQuiver-sw-cache-";
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
 const OFFLINE_URL = "TutorialQuiver.offline.html";
 // Files that will be cached on load.
 const CACHED_FILES = ["TutorialQuiver.html","TutorialQuiver.js","TutorialQuiver.offline.html","TutorialQuiver.worker.js","TutorialQuiver.audio.worklet.js"];
 // Files that we might not want the user to preload, and will only be cached on first load.
-const CACHABLE_FILES = ["TutorialQuiver.wasm","TutorialQuiver.pck"];
+const CACHABLE_FILES = ["TutorialQuiver.wasm","TutorialQuiver.pck","TutorialQuiver.side.wasm"];
 const FULL_CACHE = CACHED_FILES.concat(CACHABLE_FILES);
 
 self.addEventListener("install", (event) => {

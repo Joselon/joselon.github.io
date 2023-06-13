@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width" user-scalable="no">
+		<meta name="viewport" content="width=device-width, user-scalable=no">
 		<title>TutorialQuiver</title>
 		<style>
 body {
@@ -136,7 +136,7 @@ body {
 
 		<script src="TutorialQuiver.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":1,"executable":"TutorialQuiver","experimentalVK":true,"fileSizes":{"TutorialQuiver.pck":13926112,"TutorialQuiver.wasm":48484652},"focusCanvas":true,"gdextensionLibs":[],"serviceWorker":"TutorialQuiver.service.worker.js"};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"TutorialQuiver","experimentalVK":false,"fileSizes":{"TutorialQuiver.pck":13926240,"TutorialQuiver.wasm":2564551},"focusCanvas":false,"gdextensionLibs":[],"serviceWorker":"TutorialQuiver.service.worker.js"};
 const engine = new Engine(GODOT_CONFIG);
 
 (function () {
@@ -208,7 +208,7 @@ const engine = new Engine(GODOT_CONFIG);
 
 	function displayFailureNotice(err) {
 		const msg = err.message || err;
-		//console.error(msg);
+		console.error(msg);
 		setStatusNotice(msg);
 		setStatusMode('notice');
 		initializing = false;
