@@ -1,0 +1,57 @@
+body {
+    display:flex;
+    flex-direction: column;
+    background-color: grey;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.header  {
+    display:flex;
+    justify-content: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around ;
+}
+
+.item a {
+    display:flex;
+    flex-direction: column;
+    border: 2px solid blue;
+    border-radius: 20px;
+    padding: 20px; 
+    animation: twinky-button 1s linear infinite alternate;
+}
+
+.item a img {
+    width:100px;
+}
+
+.item a:hover {
+    animation:none
+}
+
+@keyframes twinky-button {
+    from {
+        opacity: 0.4;
+        border-radius: 15px;
+        
+        }
+    to {
+        opacity:1;
+        border-radius: 25px;
+    }
+}
+
+.item a p {
+    display:flex;
+    width:100px;
+    color: black !important;
+    text-decoration: none;
+    text-align: center;
+}
