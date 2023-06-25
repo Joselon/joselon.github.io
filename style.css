@@ -10,6 +10,7 @@ h1, h2 {
 
 .header  {
     display:flex;
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -33,7 +34,8 @@ h1, h2 {
 }
 
 .item a:hover {
-    animation:none
+    animation:none;
+    opacity:1;
 }
 
 @keyframes twinky-button {
@@ -43,7 +45,7 @@ h1, h2 {
         
         }
     to {
-        opacity:1;
+        opacity:0.9;
         border-radius: 25px;
     }
 }
