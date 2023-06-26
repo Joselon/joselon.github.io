@@ -1,15 +1,35 @@
 body {
-    display:flex;
+    display: flex;
     flex-direction: column;
     background-color: grey;
+    font-family: i;
 }
 
-h1, h2 {
+h1,
+h2,
+p,
+li,
+a {
     text-align: center;
+    font-style: italic;
+    color: aliceblue;
+    background-color: rgba(250, 62, 0, 0.75);
+    border: 1px solid;
+    border-radius: 15px;
+    padding: 2px;
 }
 
-.header  {
-    display:flex;
+li {
+    background-color: white;
+    list-style: none;
+}
+
+/*ul li::before {
+	content: " 🙉 " 
+}*/
+
+.header {
+    display: flex;
     flex-direction: column;
     justify-content: center;
 }
@@ -17,43 +37,43 @@ h1, h2 {
 .content {
     display: flex;
     flex-direction: row;
-    justify-content:space-around ;
+    justify-content: space-around;
 }
 
 .item a {
-    display:flex;
+    display: flex;
     flex-direction: column;
     border: 2px solid blue;
     border-radius: 20px;
-    padding: 20px; 
+    padding: 20px;
     animation: twinky-button 1s linear infinite alternate;
 }
 
 .item a img {
-    width:100px;
+    width: 100px;
 }
 
 .item a:hover {
-    animation:none;
-    opacity:1;
+    animation: none;
+    opacity: 1;
 }
 
 @keyframes twinky-button {
     from {
         opacity: 0.4;
         border-radius: 15px;
-        
-        }
+
+    }
+
     to {
-        opacity:0.9;
+        opacity: 0.9;
         border-radius: 25px;
     }
 }
 
 .item a p {
-    display:flex;
-    width:100px;
-    color: black !important;
+    display: flex;
+    width: 100px;
     text-decoration: none;
     text-align: center;
 }
