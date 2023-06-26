@@ -2,26 +2,48 @@ body {
     display: flex;
     flex-direction: column;
     background-color: grey;
-    font-family: i;
 }
 
 h1,
-h2,
-p,
-li,
-a {
+li {
     text-align: center;
-    font-style: italic;
-    color: aliceblue;
+    font-style: normal;
+    color: white;
     background-color: rgba(250, 62, 0, 0.75);
     border: 1px solid;
     border-radius: 15px;
     padding: 2px;
+    margin:5px;
+}
+
+h2 {
+    text-align: center;
+    font-style: normal;
+    color: aliceblue;
+
+    margin:5px;
+}
+
+ul {
+    columns:2;
+}
+a {
+    color:white !important;
+    text-decoration: none;
+}
+
+p {
+    text-align: center;
 }
 
 li {
-    background-color: white;
+    background-color:rgba(250, 62, 0, 0.75);
     list-style: none;
+}
+
+
+h2 a:hover{
+     color:rgb(203, 203, 203) !important;
 }
 
 /*ul li::before {
@@ -35,24 +57,35 @@ li {
 }
 
 .content {
+    margin-top:25px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
+.item a p {
+    display: flex;
+    width: 100px;
+    text-decoration: none;
+    text-align: center;
+    background-color: rgba(250, 62, 0, 0.75);
+    border: 1px solid;
+    border-radius: 15px;
+    padding: 15px;
+}
+
 .item a {
     display: flex;
     flex-direction: column;
-    border: 2px solid blue;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(250, 62, 0, 0.75);
     border-radius: 20px;
+    background-color: rgb(202, 155, 121);
     padding: 20px;
-    animation: twinky-button 1s linear infinite alternate;
+    box-shadow: 10px 10px 5px rgb(108, 93, 93);
+    animation: twinky-button 1s linear alternate;
 }
-
-.item a img {
-    width: 100px;
-}
-
 .item a:hover {
     animation: none;
     opacity: 1;
@@ -61,19 +94,10 @@ li {
 @keyframes twinky-button {
     from {
         opacity: 0.4;
-        border-radius: 15px;
-
     }
 
     to {
         opacity: 0.9;
-        border-radius: 25px;
     }
 }
 
-.item a p {
-    display: flex;
-    width: 100px;
-    text-decoration: none;
-    text-align: center;
-}
