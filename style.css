@@ -11,8 +11,8 @@ li {
     color: white;
     background-color: rgba(250, 62, 0, 0.75);
     border: 1px solid;
-    border-radius: 15px;
-    padding: 2px;
+    border-radius: 10px;
+    padding: 5px 2px 5px 2px;
     margin:5px;
 }
 
@@ -24,9 +24,7 @@ h2 {
     margin:5px;
 }
 
-ul {
-    columns:2;
-}
+
 a {
     color:white !important;
     text-decoration: none;
@@ -36,8 +34,12 @@ p {
     text-align: center;
 }
 
+ul {
+    padding: 0;
+    columns:2;
+}
+
 li {
-    background-color:rgba(250, 62, 0, 0.75);
     list-style: none;
 }
 
@@ -61,8 +63,12 @@ h2 a:hover{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
 }
-
+.item {
+    margin:15px;
+    max-width:150px;
+}
 .item a p {
     display: flex;
     width: 100px;
@@ -99,5 +105,11 @@ h2 a:hover{
     to {
         opacity: 0.9;
     }
+}
+
+@media (max-width: 768px) and (orientation:portrait) {
+ .content {
+    flex-direction: column;
+ }
 }
 
