@@ -1,61 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>cursoLit</title>
-      <script type="module" crossorigin src="./assets/index-8dDTyK7k.js"></script>
-      <link rel="stylesheet" crossorigin href="./assets/index-fU4gTuOY.css">
-    </head>
-    <body>
-        <dile-nav menu="right">
-            <h2 slot="title">Menu DileNav</h2>
-            <dile-menu-hamburger   slot="menu">
-                <dile-selector id="selector" selected="users" attrForSelected="name" selectorId="tabs" slot="menu">
-                    <dile-selector-item icon="navigate_next" name="users">Users</dile-selector-item>
-                    <dile-selector-item icon="navigate_next" name="posts">Posts</dile-selector-item>
-                    <dile-selector-item icon="navigate_next" name="articles">Articles</dile-selector-item>
-                  </dile-selector>
-              </dile-menu-hamburger>
-        </dile-nav>
-        <section>
-        <dile-tabs id="tabselect" attrForSelected="name" selected="users" selectorId="tabs">
-            <dile-tab name="users">Users</dile-tab>
-            <dile-tab name="posts">Posts</dile-tab>
-            <dile-tab name="articles">Articles</dile-tab>
-          </dile-tabs>
-        </section>
 
-        <section>
-            <dile-pages selected="users" attrforselected="name" selectorId="tabs">
-                <div name="users">
-                  <h1> Curso Lit de Escuela IT </h1>
-                  <h2>Page 1</h2>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde excepturi atque, et quaerat vero saepe maiores, maxime dolore officiis earum cumque temporibus tenetur, possimus deserunt magni itaque! Reiciendis, assumenda quo?</p>
-                </div>
-                <div name="posts">
-                  <h1> Vite con Lit </h1>
-                  <h2>Page 2</h2>
-                  <ul>
-                    <li>item 1</li>
-                    <li>item 2</li>
-                    <li>item 3</li>
-                  </ul>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde excepturi atque, et quaerat vero saepe maiores, maxime dolore officiis earum cumque temporibus tenetur, possimus deserunt magni itaque! Reiciendis, assumenda quo?</p>
-                </div>
-                <div name="articles">
-                  <h1> Probando elementos creados de <a href="https://dile-components.polydile.com/">Polydile Web Components</a></h1>
-                  <h2>Page three</h2>
-                  <p>Just another page</p>
-                </div>
-              </dile-pages>
-        </section>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cursoLit</title>
+  <script type="module" crossorigin src="./assets/index-9-Sbfea1.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-sPlBvgPy.css">
+</head>
 
-        
-        <dw-message></dw-message>
-        <dw-message msg="Otro mensaje"></dw-message>
-        
+<body>
+  <dile-nav menu="right">
+    <h2 slot="title"> Curso Lit de Escuela IT </h2>
+    <dile-menu-hamburger slot="menu">
+      <dile-selector id="selector" selected="home" attrForSelected="name" selectorId="tabs" slot="menu">
+        <dile-selector-item icon="navigate_next" name="home">Home</dile-selector-item>
+        <dile-selector-item icon="navigate_next" name="posts">Posts</dile-selector-item>
+        <dile-selector-item icon="navigate_next" name="articles">Articles</dile-selector-item>
+      </dile-selector>
+    </dile-menu-hamburger>
+  </dile-nav>
+  <section>
+    <dile-tabs id="tabselect" attrForSelected="name" selected="users" selectorId="tabs">
+      <dile-tab name="home">Home</dile-tab>
+      <dile-tab name="posts">Posts</dile-tab>
+      <dile-tab name="articles">Articles</dile-tab>
+    </dile-tabs>
+  </section>
 
-    </body>
+  <section>
+    <dile-pages selected="home" attrforselected="name" selectorId="tabs">
+      <div name="home">
+        <h1> Curso Lit de Escuela IT </h1>
+        <h2>Page 1</h2>
+      </div>
+      <div name="posts">
+        <h1> Vite con Lit </h1>
+        <h2>Page 2</h2>
+        <p> Como dependencia de desarrollo</p>
+      </div>
+      <div name="articles">
+        <h1> Probando elementos creados de <a href="https://dile-components.polydile.com/">Polydile Web Components</a>
+        </h1>
+        <h2>Page 3</h2>
+        <ul>
+          <li>dile-nav</li>
+          <li>dile-menu-hamburger</li>
+          <li>dile-selector</li>
+          <li>dile-pages</li>
+          <li>dile-tabs</li>
+        </ul>
+      </div>
+    </dile-pages>
+  </section>
+  <section>
+    <dw-message show></dw-message>
+    <dw-message message="Otro mensaje"></dw-message>
+  </section>
+  <section>
+    <eit-todo-list></eit-todo-list>
+  </section>
+
+</body>
+
 </html>
