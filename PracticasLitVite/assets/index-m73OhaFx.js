@@ -559,7 +559,7 @@ var Mc=Object.defineProperty;var Nc=(n,e,t)=>e in n?Mc(n,e,{enumerable:!0,config
                 flex-grow: 1;
                 margin-right: 1rem;
             }
-        `]);customElements.define("eit-todo-search",oc);class io extends J{constructor(){super(),this.completed=!1,this.todoItems=[{title:'Aplicar botón "Completar" a todos los elementos',completed:!1},{title:"Implementar búsqueda de elementos",completed:!1},{title:"Empezar el curso de Lit",completed:!0}]}render(){return D`
+        `]);customElements.define("eit-todo-search",oc);class io extends J{constructor(){super(),this.completed=!1,this.todoItems=[{title:"Agregar tareas",completed:!1},{title:'Aplicar botón "Completar" a todos los elementos',completed:!0},{title:"Implementar búsqueda de elementos",completed:!1},{title:"Empezar el curso de Lit",completed:!0}]}render(){return D`
             ${this.headingTemplate}
             <eit-todo-search></eit-todo-search>
             ${this.bodyTemplate}
@@ -570,8 +570,8 @@ var Mc=Object.defineProperty;var Nc=(n,e,t)=>e in n?Mc(n,e,{enumerable:!0,config
             ${this.todoItems.map(e=>D`
                 <li>
                 ${e.completed?Ee.checked:Ee.unchecked}
-                <span>${e.title}</span>
-                <p> <eit-switch @eit-switch-changed=${this.changeItemCompleted(e)}>${Ee.done}</eit-switch></p>
+                <span>${e.title} </span>
+                <eit-switch @eit-switch-changed=${this.changeItemCompleted(e)} ?checked=${e.completed}>${Ee.done}</eit-switch>
                 </li>
             `)}
         </ul>        
@@ -606,6 +606,11 @@ var Mc=Object.defineProperty;var Nc=(n,e,t)=>e in n?Mc(n,e,{enumerable:!0,config
 
             li span {
                 margin-left: 0.5rem;
+                margin-right: 0.5rem;
+            }
+
+            eit-switch {
+                scale:0.5;
             }
         `]),F(io,"properties",{completed:{type:Boolean},todoItems:{type:Array}});customElements.define("eit-todo-list",io);/**
  * @license
@@ -1835,7 +1840,7 @@ path {
             </section>
             ${this.message?ts`<div class="message ${this.errored?"errored-msg":""}"><span>${this.message}</span></div>`:""}
           </main>
-        `}_lookForEnter(e){(e.keyCode?e.keyCode:e.which)=="13"&&this.dispatchEvent(new CustomEvent("enter-pressed"))}_input(e){this.value=e.target.value,this.hideErrorOnInput&&this.errored&&(this.errored=!1,this.message="")}availableType(e){return this.types.includes(e)?e:"text"}get el(){return this.shadowRoot.querySelector("input")}doBlur(){}doFocus(){this.selectOnFocus&&this.el.select()}computeValue(e){return e}focus(){this.el.focus()}}window.customElements.define("dile-input",Hf);class $o extends J{constructor(){super(),this.counter=0,this.quantity=1,this.active=!1}render(){return D`
+        `}_lookForEnter(e){(e.keyCode?e.keyCode:e.which)=="13"&&this.dispatchEvent(new CustomEvent("enter-pressed"))}_input(e){this.value=e.target.value,this.hideErrorOnInput&&this.errored&&(this.errored=!1,this.message="")}availableType(e){return this.types.includes(e)?e:"text"}get el(){return this.shadowRoot.querySelector("input")}doBlur(){}doFocus(){this.selectOnFocus&&this.el.select()}computeValue(e){return e}focus(){this.el.focus()}}window.customElements.define("dile-input",Hf);class $o extends J{constructor(){super(),this.counter=0,this.quantity=1,this.active=!0}render(){return D`
             <wired-card elevation="3">
                 <p><eit-switch ?checked=${this.active}></eit-switch>
                 <wired-button @click=${this.changeActive}>Activar/ Desactivar</wired-button></p>
@@ -1853,10 +1858,10 @@ path {
                         class= "wired-rendered"
                     ></wired-slider>
                 </p>
-                <wired-button @click=${this.increment}>Incrementar</wired-button>
-                <wired-button @click=${this.decrement} class="decrement">Decrementar</wired-button>
+                <wired-button @click=${this.increment} ?disabled=${!this.active}>Incrementar</wired-button>
+                <wired-button @click=${this.decrement} class="decrement" ?disabled=${!this.active}>Decrementar</wired-button>
             </wired-card>
-        `}doChangeQuantity(e){this.quantity=e.detail.value}increment(){this.counter+=parseInt(this.quantity)}decrement(){this.counter-=parseInt(this.quantity)}changeActive(){this.active=!this.active}}F($o,"styles",[Zi`
+        `}doChangeQuantity(e){this.quantity=e.detail.value}increment(){this.active&&(this.counter+=parseInt(this.quantity))}decrement(){this.active&&(this.counter-=parseInt(this.quantity))}changeActive(){this.active=!this.active}}F($o,"styles",[Zi`
             :host {
                 display: inline-block;
             }
