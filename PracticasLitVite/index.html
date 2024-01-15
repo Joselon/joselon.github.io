@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ejercicios del Curso de Lit</title>
-  <script type="module" crossorigin src="./assets/index-4kYwVS7z.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-MI-Qgbv0.css">
+  <script type="module" crossorigin src="./assets/index-Yanwpd7_.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-_BrYVkDf.css">
 </head>
 
 <body>
@@ -15,18 +15,18 @@
     <h2 slot="title">Ejercicios del Curso de Lit de Escuela IT </h2>
     <dile-menu-hamburger slot="menu">
       <dile-selector id="selector" attrForSelected="name" selected="intro" selectorId="tabs" slot="menu">
-        <dile-selector-item icon="navigate_next" name="intro">Introducción</dile-selector-item>
+        <dile-selector-item icon="navigate_next" name="intro">Intro</dile-selector-item>
         <dile-selector-item icon="navigate_next" name="todolist">Lista</dile-selector-item>
-        <dile-selector-item icon="navigate_next" name="elements">CustomElements</dile-selector-item>
+        <dile-selector-item icon="navigate_next" name="elements">Custom Elements</dile-selector-item>
       </dile-selector>
     </dile-menu-hamburger>
   </dile-nav>
 
   <section>
     <dile-tabs id="tabselect" attrForSelected="name" selected="intro" selectorId="tabs">
-      <dile-tab name="intro">Introducción</dile-tab>
+      <dile-tab name="intro">Intro</dile-tab>
       <dile-tab name="todolist">Lista</dile-tab>
-      <dile-tab name="elements">CustomElements</dile-tab>
+      <dile-tab name="elements">Custom Elements</dile-tab>
     </dile-tabs>
   </section>
 
@@ -67,7 +67,22 @@
         <section>
           <ul>
             <li>
-              <p> dw-message</p>
+              <p>eit-show-click </p>
+              <eit-show-click clickX='100' clickY='100'></eit-show-click>
+            </li>
+            <li>
+              <p>eit-overlay</p>
+              <eit-overlay>
+                <span slot="trigger">Pulsa aquí</span>
+                <div slot="overlay">
+                  <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, nesciunt atque aspernatur
+                    voluptatibus est nulla vero fuga pariatur dignissimos perspiciatis nisi facilis fugiat error.
+                    Voluptate mollitia quas amet accusantium sed.</p>
+                </div>
+              </eit-overlay>
+            </li>
+            <li>
+              <p>dw-message</p>
               <dw-message show></dw-message>
               <dw-message message="Otro mensaje"></dw-message>
             </li>
@@ -75,11 +90,10 @@
               <p>eit-switch</p>
               <eit-switch checked></eit-switch>
             </li>
-            <li>
+            <li id="counterScaled">
               <p>eit-counter</p>
               <eit-counter>TOTAL</eit-counter>
-              <p>ERROR:<small> ¡¡¡No se ve el slider pero está ahi!!!</small> Parece que dile-pages no es compatible con
-                wired-slider</p>
+              <p>ERROR:<small> ¡¡¡No se ve el slider pero está ahí!!!</small> dile-pages no actualiza correctamente wired-slider rendered</p>
             </li>
           </ul>
         </section>
@@ -91,6 +105,20 @@
     <eit-counter>CONTADOR</eit-counter>
   </footer>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      let menu = document.createElement('eit-overlay');
+    });
+
+   /* setTimeout(function () {
+      for (element of document.getElementsByTagName('eit-overlay')) {
+        if (element.parentNode) {
+          element.parentNode.removeChild(element);
+        }
+      }
+    }, 10000); */
+
+  </script>
 </body>
 
 </html>
