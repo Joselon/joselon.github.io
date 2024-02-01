@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ELABORA TEST</title>
 
-  <script type="module" crossorigin src="./assets/index-BpFUXehD.js"></script>
+  <script type="module" crossorigin src="./assets/index-Ik88tBJz.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-PlkgsTzl.css">
 </head>
 
@@ -15,13 +15,16 @@
     <header>
         <dile-nav>
             <span slot="title">ELABORA TEST</span>
-            <span slot="actions"><button onclick="location.reload()">RESET</button></span>
+            <span slot="actions">
+                <button onclick="location.reload()">RESTART</button>
+                <button onclick="window.localStorage.clear();location.reload()">RESET</button>
+            </span>
         </dile-nav>
         <div id="state"></div>
     </header>
     <section id="app"></section>
     <footer>
-<jno-feedback></jno-feedback>
+        <jno-feedback></jno-feedback>
     </footer>
 
 </body>
