@@ -1062,7 +1062,7 @@ var C$=Object.defineProperty;var x$=(n,t,e)=>t in n?C$(n,t,{enumerable:!0,config
                     </jno-question>
             `)}
             <jno-answer-insert></jno-answer-insert>
-        `}insertAnswer(t){this.shadowRoot.querySelector("jno-answer-insert").insert(t.detail)}}_(r$,"styles",[b`
+        `}insertAnswer(t){this.shadowRoot.querySelector("jno-answer-insert").insert(t.detail,this.userState.getCurrentUserName())}}_(r$,"styles",[b`
             :host {
                 display: block;
             }
