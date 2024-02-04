@@ -715,6 +715,7 @@ var C$=Object.defineProperty;var x$=(n,t,e)=>t in n?C$(n,t,{enumerable:!0,config
             <jno-categories-list
              .elements=${this.category.getSubcategories()}
              .userState=${this.userState}
+             hasAncestor
              ></jno-categories-list>
         </div>
         `}changeSelectedOption(t){this.selectedAction=t.detail.selectedOption,this.doAction(this.selectedAction)}doAction(t){switch(t){case"Seleccionar":this.userState.setCurrentCategory(this.category),this.userState.setCurrentConcept(new Vn("---")),this.dispatchModelChangedEvent(),this.showFeedbackSuccess(`CATEGORÍA SELECCIONADA: ${this.category.getName()}`);break;case"Añadir":this.insert();break;case"Editar":this.edit();break;case"Eliminar":this.delete(),this.showFeedbackError(`Eliminar: ${this.category.getName()}`);break;default:this.showFeedbackError("ERROR: Aún no disponible...")}}insert(){this.dispatchEvent(new CustomEvent("insert-category",{detail:this.category}))}edit(){this.dispatchEvent(new CustomEvent("edit-category",{detail:this.category}))}delete(){this.dispatchEvent(new CustomEvent("delete-category",{detail:this.category}))}toggleSubcategoriesDiv(){this.subcategoriesDiv.style.display==="block"?this.subcategoriesDiv.style.display="none":this.subcategoriesDiv.style.display="block"}showFeedbackError(t){this.dispatchEvent(new CustomEvent("error-feedback",{bubbles:!0,composed:!0,detail:t}))}showFeedbackSuccess(t){this.dispatchEvent(new CustomEvent("success-feedback",{bubbles:!0,composed:!0,detail:t}))}dispatchModelChangedEvent(){this.dispatchEvent(new CustomEvent("model-changed",{bubbles:!0,composed:!0,detail:"model-changed"}))}}_(Hp,"styles",[b`
@@ -888,9 +889,9 @@ var C$=Object.defineProperty;var x$=(n,t,e)=>t in n?C$(n,t,{enumerable:!0,config
                 --dile-confirm-cancel-text-button-color: #303030;
                 --dile-confirm-cancel-button-color: transparent;
             }
-        `]);customElements.define("jno-category-delete",t$);class e$ extends Ei(A){static get properties(){return{elements:{type:Array},userState:{type:Object}}}constructor(){super(),this.elements=[],this.userState={}}render(){return g`
+        `]);customElements.define("jno-category-delete",t$);class e$ extends Ei(A){static get properties(){return{elements:{type:Array},userState:{type:Object},hasAncestor:{type:Boolean}}}constructor(){super(),this.elements=[],this.userState={},this.hasAncestor=!1}render(){return g`
             ${this.template}
-        `}get template(){if(this.userState.getCurrentUserType()===z.TEACHER){let t=g``;return this.elements.length!==0&&(t=g`
+        `}get template(){if(this.userState.getCurrentUserType()===z.TEACHER){let t=g``;return(this.elements.length!==0||!this.hasAncestor)&&(t=g`
                  <dile-button-icon 
                    @click=${this.addCategory}
                  >
