@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ELABORA TEST</title>
 
-  <script type="module" crossorigin src="./assets/index-lema0Ox3.js"></script>
+  <script type="module" crossorigin src="./assets/index-KPT1a1FV.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-PlkgsTzl.css">
 </head>
 
@@ -17,7 +17,7 @@
             <span slot="title">ELABORA TEST</span>
             <span slot="actions">
                 <button onclick="location.reload()">SALIR</button>
-                <button onclick="window.localStorage.clear();location.reload()">RESET</button>
+                <button onclick="resetConfirmElement.open();">RESET</button>
             </span>
         </dile-nav>
         <div id="state"></div>
@@ -26,7 +26,21 @@
     <footer>
         <jno-feedback></jno-feedback>
     </footer>
-
+    
+    <dile-confirm id="resetConfirm" cancelLabel="Cancelar" acceptLabel="Reset" @dile-confirm-accepted="resetStorage()">
+        <p>
+            Se borrarán todos los cambios realizados y se cargan los datos inciales.
+        </p>
+    </dile-confirm>
+    <script>
+        const resetConfirmElement = document.getElementById('resetConfirm')
+        resetConfirmElement.addEventListener('dile-confirm-accepted', resetStorage);
+        function resetStorage() {
+            resetConfirmElement.close();
+            window.localStorage.clear();
+            location.reload();
+        }
+    </script>
 </body>
 
 </html>
