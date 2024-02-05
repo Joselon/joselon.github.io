@@ -1183,6 +1183,7 @@ var C$=Object.defineProperty;var x$=(n,t,e)=>t in n?C$(n,t,{enumerable:!0,config
                 <p>
                     ¿De verdad deseas borrar este Concepto: <b>${this.keyword}</b>?
                 </p>
+                <small>(Se borraran todas las preguntas asociadas)</small>
             </dile-confirm> 
         `}delete(t,e){this.concept=t,this.category=e,this.concepts=this.category.getConcepts(),this.keyword=t.getKeyword(),this.elmodal.open()}deleteConcept(){this.category.deleteConceptKeyQuestions(this.keyword),this.concepts.delete(this.keyword),this.dispatchModelChangedEvent(),this.elmodal.close()}dispatchModelChangedEvent(){this.dispatchEvent(new CustomEvent("model-changed",{bubbles:!0,composed:!0,detail:{msg:"model-changed-concept-delete",concept:this.concept}}))}}_(c$,"styles",[b`
             :host {
@@ -1210,7 +1211,7 @@ var C$=Object.defineProperty;var x$=(n,t,e)=>t in n?C$(n,t,{enumerable:!0,config
             }
         `]);customElements.define("jno-concept-add",u$);class p$ extends Si(A){static get properties(){return{elements:{type:Array},userState:{type:Object}}}constructor(){super(),this.elements=new Map,this.userState={}}render(){return g`
             ${this.template}
-        `}get template(){return this.userState.getCurrentCategory().getName()==="---"?g`<p>Debe seleccionar una categoría</p>`:(this.elements=this.userState.getCurrentCategory().getConceptsArray(),console.log(this.elements),g`
+        `}get template(){return this.userState.getCurrentCategory().getName()==="---"?g`<p>Debe seleccionar una categoría</p>`:(this.elements=this.userState.getCurrentCategory().getConceptsArray(),g`
             <p>Contenidos en la categoría <b>${this.userState.getCurrentCategory().getName()}</b> (sin subcategorías):</p>
             <dile-button-icon 
                    @click=${this.addConcept}
