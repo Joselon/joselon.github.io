@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ELABORA TEST</title>
-  <script type="module" crossorigin src="./assets/index-ONjWlRJ_.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-JFo6ovq_.css">
+
+  <script type="module" crossorigin src="./assets/index-qnIsagR2.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-I8xwCL3V.css">
 </head>
 
 <body>
@@ -21,8 +22,17 @@
         </dile-nav>
         <div id="state"></div>
         <eit-info-overlay horizontalAlign="right">
-            Ver la <a href="https://github.com/Joselon/ProyectoOpoTest#readme" target="_blank">Documentación</a> del
-            Proyecto
+            <ol>
+                <li>Ver la
+                    <a href="https://github.com/Joselon/ProyectoOpoTest#readme" target="_blank">Documentación</a>
+                    del Proyecto
+                </li>
+                <li>
+                    <small>Importar DB</small>
+                    <input type="file" id="categoriesJSONfile" accept=".json, .JSON" />
+                </li>
+                <li> <small>Exportar DB</small><br><button id="exportJSONfile">Guardar</button></li>
+            </ol>
         </eit-info-overlay>
         <dile-confirm id="resetConfirm" cancelLabel="Cancelar" acceptLabel="Reset"
             @dile-confirm-accepted="resetStorage()">
@@ -45,10 +55,7 @@
 
     <footer>
         <jno-feedback></jno-feedback>
-        <small>Importar JSON</small>
-        <input type="file" id="categoriesJSONfile" accept=".json, .JSON" />
-        <button id="exportJSONfile">Exportar JSON</button>
-        <p>Versión DEMO: Cambios en local</p>
+        <small>Versión DEMO: Cambios en local</small>
     </footer>
 
 
