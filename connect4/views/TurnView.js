@@ -2,36 +2,59 @@ import { Coordinate } from '../models/Board.js';
 export class TurnView {
     #turn;
     #turnDiv;
+    #infoDiv;
 
     constructor(turn) {
         this.#turn = turn;
         this.#turnDiv = document.getElementById("turnDiv");
         this.#turnDiv.innerHTML = "";
+        this.#infoDiv = document.getElementById("infoDiv");
+        this.#infoDiv.innerHTML = "";
     }
 
     setNumberOfHumanPlayers(numberOfHumanPlayers) {
         this.#turn.reset(numberOfHumanPlayers);
     }
 
+    #createCircle() {
+        const circle = document.createElement('div');
+        circle.style.width = '25px';
+        circle.style.height = '25px';
+        circle.style.borderRadius = '50%';
+        circle.style.top = '50%';
+        circle.style.left = '50%';
+        circle.style.position = 'relative';
+        circle.style.backgroundColor = this.getActivePlayer().getColor().toString();
+        return circle;
+      }
+
     renderTurn() {
-        this.#turnDiv.innerHTML = `Turn: ${this.getActivePlayer().getColor().toString()}`;
+        this.#turnDiv.innerHTML = "";
+        const circle = this.#createCircle();
+        this.#turnDiv.appendChild(circle);
+        //this.#turnDiv.innerHTML += `Turn Player ${this.getActivePlayer().getColor().getString()}`;
+        this.#turnDiv.innerHTML += ` ${this.getActivePlayer().getTurnMessage()}`;
+        this.#turnDiv.classList.add('animated');
     }
+
+
 
     getActivePlayer() {
         return this.#turn.getActivePlayer();
     }
 
     renderInvalidColumn(column) { 
-        document.getElementById("infoDiv").style.display="block";
-        document.getElementById("infoDiv").innerHTML = ` Invalid column!!! ${column+1} 's completed`;
+        this.#infoDiv.style.display="block";
+        this.#infoDiv.innerHTML = ` Invalid column!!! ${column+1} 's completed`;
     }
 
     play(column) {
         this.column = column;
-        this.#turn.getActivePlayer().accept(this);
+        this.getActivePlayer().accept(this);
     }
 
     renderResults() {
+        this.#turnDiv.classList.remove('animated');
         if ((this.#turn.getBoard()).isWinner()) {
             this.#turnDiv.innerHTML = `${this.getActivePlayer().getColor().toString()}s WIN!!! : -)`;
         } else {
@@ -40,7 +63,7 @@ export class TurnView {
     }
 
     visitHumanPlayer(humanPlayer) {
-        document.getElementById("infoDiv").innerHTML="";
+        this.#infoDiv.innerHTML="";
         if(humanPlayer.isComplete(this.column)){
             this.renderInvalidColumn(this.column);
         }
@@ -51,8 +74,12 @@ export class TurnView {
     }
     visitRandomPlayer(randomPlayer) {
         const selectedColumn=randomPlayer.getColumn();
-        document.getElementById("infoDiv").style.display="block";
-        document.getElementById("infoDiv").innerHTML=`Choosed radom column: ${selectedColumn+1}`;
+        this.#infoDiv.innerHTML = "";
+        this.#infoDiv.style.display="block";
+        const circle = this.#createCircle();
+        this.#infoDiv.appendChild(circle);
+        this.#infoDiv.style.display="block";
+        this.#infoDiv.innerHTML +=`Choosed radom column: ${selectedColumn+1}`;
         this.#turn.play(selectedColumn);
     }
 

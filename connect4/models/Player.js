@@ -18,6 +18,8 @@ class Player {
     isComplete(column) {
         return this.#board.isComplete(column);
     }
+    getTurnMessage() {
+    }
     accept(visitor) { }
 }
 
@@ -25,6 +27,10 @@ class HumanPlayer extends Player {
 
     constructor(color, board) {
         super(color, board);
+    }
+
+    getTurnMessage() {
+        return "Choose a column...";
     }
     accept(visitor) {
         visitor.visitHumanPlayer(this);
@@ -37,7 +43,9 @@ class RandomPlayer extends Player {
     constructor(color, board) {
         super(color, board);
     }
-
+    getTurnMessage() {
+        return "Choosing a column randomly...";
+    }
     accept(visitor) {
         visitor.visitRandomPlayer(this);
     }
