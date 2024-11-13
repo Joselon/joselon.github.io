@@ -34,9 +34,13 @@ p {
     text-align: center;
 }
 
-ul {
+.content ul {
     padding: 0;
     columns:2;
+}
+
+.content2 ul {
+    padding: 0;
 }
 
 li {
@@ -60,6 +64,14 @@ h2 a:hover{
 }
 
 .content {
+    margin-top:25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.content2 {
     margin-top:25px;
     display: flex;
     flex-direction: row;
