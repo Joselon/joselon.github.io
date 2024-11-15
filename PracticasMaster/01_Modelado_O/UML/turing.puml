@@ -1,6 +1,17 @@
 @startuml turing
 
-class Dispositivo{}
+class Dispositivo{
+ + leer()
+ + escribir()
+ + moverizquierda()
+ + moverderecha()
+ + cambiarestado()
+ + detenerse()
+}
+class Cinta
+class Cuadrado
+class Simbolo
+
 
 
 skin rose
