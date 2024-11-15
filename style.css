@@ -120,6 +120,12 @@ h2 a:hover{
     }
 }
 
+#definition li {
+    text-align: unset;
+    background-color: unset;
+    color: unset;
+    border-radius: 0px;
+}
 @media (max-width: 768px) and (orientation:portrait) {
  .content {
     flex-direction: column;
