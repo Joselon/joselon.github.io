@@ -42,13 +42,53 @@
         <h2>¿Cómo funciona?</h2>
         <p>La máquina de Turing funciona por medio de un <strong>control finito</strong>, una <strong>cabeza
                 lectora</strong> y una <strong>cinta</strong> por en la cual puede haber diferentes
-            <strong>caracteres</strong>, y en la cual se encuentra la palabra de entrada. Hacia el lado 
+            <strong>caracteres</strong>, y en la cual se encuentra la palabra de entrada. Hacia el lado
             derecho la cinta tiene una longitud que es el lugar donde
             se llenan los espacios con el carácter blanco el cual es representado por la letra
             <em><strong>“t”</strong></em>. Hacia su lado izquierdo pasa lo contrario pues la cinta no es infinita razón
             por la cual hay un cuadro de la cinta que es el extremo izquierdo. Además, tiene una cabeza que se mueve
             hacia la izquierda y derecha, por lo que tiene la capacidad de pasar en ciclos repetidos sobre un mismo
-            segmento de la cinta.</p>
+            segmento de la cinta.
+        </p>
+        <p>La máquina está conformada por un <strong>alfabeto</strong> de entrada y uno de salida, por un
+            <strong>símbolo especial</strong> conocido con el <strong>nombre de blanco</strong> el cual normalmente se
+            representa por medio de una b, Δ o 0, por un grupo de estados finitos y por un conjunto de
+            <strong>transiciones</strong> entre estos estados.
+        </p>
+        <p>Su funcionamiento se fundamenta en la <strong>transición</strong>, la cual se encarga de recibir un
+            <strong>estado inicial</strong> y una <strong>cadena de caracteres</strong> los cuales pertenecen al
+            alfabeto de entrada. A partir de ese momento la máquina empieza a leer una <strong>celda</strong> de la
+            cinta, <strong>borrando</strong> el símbolo, y <strong>escribiendo</strong> el nuevo símbolo que pertenece
+            al alfabeto de salida para luego avanza a la izquierda o a la derecha, un tiempo a la vez y repitiendo el
+            proceso según se indique en la función de transición. Al final del proceso se detiene en un estado de
+            <strong>aceptación</strong>, representando así la salida.
+        </p>
+        <h2>Ejemplos:</h2>
+        <ul>
+            <li>Una cadena de X seguida de una cadena de Y. Ambas de la misma longitud.</li>
+            <li>{X^n Y^n, n&gt;0}</li>
+            <li>Estado inicial de la cinta: 000111#</li>
+            <li>Transiciones:<ul>
+                    <li>0 0 X r 1</li>
+                    <li>1 0 0 r 1</li>
+                    <li>1 Y Y r 1</li>
+                    <li>2 X X r 0</li>
+                    <li>3 Y Y r 3</li>
+                    <li>0 Y Y r 3</li>
+                    <li>1 1 Y l 2</li>
+                    <li>2 0 0 l 2</li>
+                    <li>2 Y Y l 2</li>
+                    <li>3 # # r 4</li>
+                    <li>4 * * r halt</li>
+                </ul>
+            </li>
+        </ul>
+        <div id="citacion">
+            <h4>Fuente:</h4>
+            <p>Briceño V., Gabriela. (2018). <i>Máquina de Turing</i>. Recuperado el 25 febrero, 2024, de Euston96: <a
+                    href="https://www.euston96.com/maquina-de-turing/">https://www.euston96.com/maquina-de-turing/</a>
+            </p>
+        </div>
     </div>
 </body>
 
