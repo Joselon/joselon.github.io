@@ -1,39 +1,47 @@
-@startuml turing
+@startuml TuringMachineModel
+
+'skin rose
+title Modelado Maquina de Turing
 
 class Dispositivo{
- + leer()
- + escribir()
- + moverizquierda()
- + moverderecha()
- + cambiarestado()
- + detenerse()
+- estado
++ scannerIO_buffer
+ +simbolo leer()
+ +simbolo escribir()
+ +void moverIzquierda()
+ +void moverDerecha()
+ +void cambiarEstado()
+ +void detenerse()
 }
+
 class Cinta
 class Cuadrado
 class Simbolo
 
+Dispositivo *--"1" Cinta :"scanner I/O"
+Cinta *--"infinitos" Cuadrado
+Cuadrado o-- Simbolo
+Dispositivo ..> Simbolo
 
+Simbolo <|-- Entrada
+Simbolo <|-- Salida
+Simbolo <|-- Blanco
 
-skin rose
+'Padre <|-down- Hija : Herencia
+'AbstractInterfaz <|.. Concreta : Implementacion ?
+'Todo "1" *-up- "many" Parte: Composition
+' o-- Agregacion
+' ..> Uso
+'-			private
+'#			protected
+'~			package private
+'+			public
 
-title Relationships - Class Diagram
+enum Estado{
 
-
-class Dwelling {
-  +Int Windows
-  +void LockTheDoor()
 }
 
-class Apartment
-class House
-class Commune
-class Window
-class Door
-
-Dwelling <|-down- Apartment: Inheritance
-Dwelling <|-down- Commune: Inheritance
-Dwelling <|-down- House: Inheritance
-Dwelling "1" *-up- "many" Window: Composition
-Dwelling "1" *-up- "many" Door: Composition
-
+'Duda: Hacer diagrama de estados? de proceso?
+'Duda: Los tipos de simbolos según el alfabeto de E/S: si se incluye el "simbolo especial" blanco y es dejar el cuadrado
+' en blanco, no sería agregación, si no composición, ya que el estar en blanco es tener un simbolo también?
 @end
