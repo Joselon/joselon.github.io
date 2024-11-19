@@ -4,28 +4,45 @@
 title Modelado Maquina de Turing
 
 class Dispositivo{
-- estado
-+ scannerIO_buffer
- +simbolo leer()
- +simbolo escribir()
- +void moverIzquierda()
- +void moverDerecha()
- +void cambiarEstado()
- +void detenerse()
+ + cambiarEstado()
+}
+
+class Escáner {
+ + leer()
+ + escribir()
+ + moverIzquierda()
+ + moverDerecha()
+ + detenerse()
+}
+
+Dispositivo --> Estado
+
+enum Estado{
++ inicial
++ borrando
++ escribiendo
++ aceptación
 }
 
 class Cinta
 class Cuadrado
-class Simbolo
+abstract class Simbolo
 
-Dispositivo *--"1" Cinta :"scanner I/O"
-Cinta *--"infinitos" Cuadrado
-Cuadrado o-- Simbolo
-Dispositivo ..> Simbolo
+Dispositivo *--"1" Escáner
+Dispositivo *--"1" Cinta 
+Cinta *--"n" Cuadrado
+Cuadrado o--"0..1" Simbolo
+Escáner ..> Cuadrado
 
-Simbolo <|-- Entrada
-Simbolo <|-- Salida
-Simbolo <|-- Blanco
+Simbolo <|.. Entrada
+Simbolo <|.. Salida
+Simbolo <|.. Blanco
+
+class Blanco {
+    + b, Δ o 0
+}
+
+
 
 'Padre <|-down- Hija : Herencia
 'AbstractInterfaz <|.. Concreta : Implementacion ?
@@ -37,9 +54,7 @@ Simbolo <|-- Blanco
 '~			package private
 '+			public
 
-enum Estado{
 
-}
 
 'Duda: Hacer diagrama de estados? de proceso?
 'Duda: Los tipos de simbolos según el alfabeto de E/S: si se incluye el "simbolo especial" blanco y es dejar el cuadrado
