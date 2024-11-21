@@ -1,0 +1,42 @@
+@startuml ImperativeGrid_DoWhile
+note
+[
+DoWhile(
+      [Draw("east",1), Shift("east",1)],
+     Not ( IsOnEdge("east") )
+),
+While( Not( IsOnEdge("south") ),
+[Shift("south"),Draw("south",1),Shift("south",1)]
+),
+While( Not( IsOnEdge("west") ),
+[Shift("west",1),Draw("west",1)]
+),
+While( Not( IsOnEdge("north") ),
+[Shift("north",1),Draw("north",1),Shift("north",1)]
+)
+]
+end note
+
+start
+repeat
+:Draw("east", 1);
+:Shift("east", 1);
+repeat while (!(isOnEdge("east"))) is (yes)
+while(!(isOnEdge("south"))) is (yes)
+:Shift("south");
+:Draw("south", 1);
+:Shift("south", 1);
+endwhile (otherwise)
+while(!(isOnEdge("west"))) is (yes)
+:Shift("west", 1);
+:Draw("west", 1);
+endwhile (otherwise)
+while(!(isOnEdge("north"))) is (yes)
+:Shift("north", 1);
+:Draw("north", 1);
+:Shift("north", 1);
+endwhile (otherwise)
+stop
+
+@enduml
+
