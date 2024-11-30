@@ -1,6 +1,6 @@
 @startuml TuringMachineModel
 
-'skin rose
+!theme reddress-darkred
 title Modelado Maquina de Turing
 
 class Dispositivo{
@@ -15,12 +15,12 @@ class Escáner {
  + detenerse()
 }
 
-Dispositivo --> Estado
+Dispositivo *--> Estado
 
 enum Estado{
 + inicial
-+ borrando
-+ escribiendo
++ lectura
++ escritura
 + aceptación
 }
 
@@ -38,7 +38,11 @@ Simbolo <|.. Entrada
 Simbolo <|.. Salida
 Simbolo <|.. Blanco
 
-class Blanco {
+Enum Entrada {
+     + 1,0,L,R,h 
+     }
+Enum Salida 
+Enum Blanco {
     + b, Δ o 0
 }
 
@@ -54,8 +58,8 @@ class Blanco {
 '~			package private
 '+			public
 
-
-
+' help theme
+' 
 'Duda: Hacer diagrama de estados? de proceso?
 'Duda: Los tipos de simbolos según el alfabeto de E/S: si se incluye el "simbolo especial" blanco y es dejar el cuadrado
 ' en blanco, no sería agregación, si no composición, ya que el estar en blanco es tener un simbolo también?
