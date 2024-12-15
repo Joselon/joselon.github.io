@@ -3,45 +3,46 @@
 title Modelado Cuadro de las Meninas de Velázquez
 
 class Cuadro {
+    + titulo,año,tamaño...
     + estética: naturalista
     + expuesto: contexto
 }
+Cuadro *-- Autor
+Cuadro o--"1..n" Espectador
+Cuadro o-- Escena
+Cuadro *-- Narrativa
 
 class Narrativa {
     iconológica / iconográfica
 }
+Narrativa ..> Cuadro
+Narrativa ..> Autor
 
 class Escenario {
     + dimensiones
     + planos
     + cuarta_pared
 }
+Escena *-- Escenario
+Escenario *--"0..n" Personaje
+Escenario *--"0..n" Decorado
 
 class Decorado {
-
+   + posicion
 }
+Decorado ..> Cuadro
 
 class Espectador {
     + posicion
     + punto_de_vista
 }
+'Espectador <|-- Autor
 
 class Personaje {
     + posicion
+    + modelo
 }
-
-Cuadro *-- Autor
-Cuadro *-- Narrativa
-Cuadro o-- Escena
-
-Escena o--"1..n" Espectador
-Escena *-- Escenario
-Escenario *--"0..n" Personaje
-Escenario *--"0..n" Decorado
 Personaje ..> Autor
-'Personaje ..> Espectador
-Decorado ..> Cuadro
-'Espectador <|-- Autor
-
+Personaje ..> Espectador
 
 @end
