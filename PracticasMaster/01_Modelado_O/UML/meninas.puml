@@ -41,7 +41,7 @@ Escenario *--"0..n" Decorado
 Personaje ..> Autor
 'Personaje ..> Espectador
 Decorado ..> Cuadro
-Espectador <|-- Autor
+'Espectador <|-- Autor
 
 
 @end
