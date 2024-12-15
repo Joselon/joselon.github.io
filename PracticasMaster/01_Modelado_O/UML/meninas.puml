@@ -1,10 +1,14 @@
 @startuml MeninasDomain
-
+!theme reddress-darkred
 title Modelado Cuadro de las Meninas de Velázquez
 
 class Cuadro {
-    + estética_naturalista
-    + expuesto_contexto
+    + estética: naturalista
+    + expuesto: contexto
+}
+
+class Narrativa {
+    iconológica / iconográfica
 }
 
 class Escenario {
@@ -13,19 +17,30 @@ class Escenario {
     + cuarta_pared
 }
 
+class Decorado {
+
+}
+
 class Espectador {
     + posicion
     + punto_de_vista
+}
+
+class Personaje {
+    + posicion
 }
 
 Cuadro *-- Autor
 Cuadro *-- Narrativa
 Cuadro o-- Escena
 
-Escena *-- Espectador
+Escena o--"1..n" Espectador
 Escena *-- Escenario
-Escenario *-- Personaje
+Escenario *--"0..n" Personaje
+Escenario *--"0..n" Decorado
 Personaje ..> Autor
+'Personaje ..> Espectador
+Decorado ..> Cuadro
 Espectador <|-- Autor
 
 
