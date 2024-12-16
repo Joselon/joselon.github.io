@@ -8,15 +8,26 @@ class Cuadro {
     + expuesto: contexto
 }
 Cuadro *-- Autor
-Cuadro o--"1..n" Espectador
-Cuadro o-- Escena
+Cuadro o--"0..n" Espectador
 Cuadro *-- Narrativa
 
 class Narrativa {
-    iconológica / iconográfica
+
 }
-Narrativa ..> Cuadro
-Narrativa ..> Autor
+Narrativa <|-- Iconográfica
+Narrativa <|-- Iconológica
+
+class Iconográfica {
+}
+Iconográfica o-- Personalidad
+
+class Personalidad {
+    Rey,Reina,Infanta...
+}
+
+class Iconológica{
+}
+Iconológica o-- Escena
 
 class Escenario {
     + dimensiones
@@ -24,25 +35,35 @@ class Escenario {
     + cuarta_pared
 }
 Escena *-- Escenario
-Escenario *--"0..n" Personaje
-Escenario *--"0..n" Decorado
+Escenario o--"0..n" Personaje
+Escenario o--"0..n" ObjetoDecorado
 
-class Decorado {
+class ObjetoDecorado {
    + posicion
+   + modelo
 }
-Decorado ..> Cuadro
+ObjetoDecorado ..> Cuadro :modelo
+ObjetoDecorado ..> Espejo :modelo
 
+class Espejo {
+    + PersonajeReflejado
+}
+Espejo ..> Personaje :modelo
+
+class Personaje {
+    + posicion
+    + modelo
+    + principal/secundario
+}
+Personaje ..> Autor :modelo
+Personaje ..> Espectador :modelo
+Personaje ..> Personalidad :modelo
 class Espectador {
     + posicion
     + punto_de_vista
 }
 'Espectador <|-- Autor
 
-class Personaje {
-    + posicion
-    + modelo
-}
-Personaje ..> Autor
-Personaje ..> Espectador
+
 
 @end
