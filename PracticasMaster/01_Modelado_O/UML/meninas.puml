@@ -19,10 +19,10 @@ Narrativa <|-- Iconológica
 
 class Iconográfica {
 }
-Iconográfica o-- Personalidad
+Iconográfica o-- Papel
 
-class Personalidad {
-    Rey,Reina,Infanta...
+class Papel {
+    Infanta,Menina,Pintor,Sirviente,Rey,Reina...
 }
 
 class Iconológica{
@@ -30,8 +30,9 @@ class Iconológica{
 Iconológica o-- Escena
 
 class Escenario {
-    + dimensiones
     + planos
+    + iluminación
+    + limites
     + cuarta_pared
 }
 Escena *-- Escenario
@@ -43,12 +44,19 @@ class ObjetoDecorado {
    + modelo
 }
 ObjetoDecorado ..> Cuadro :modelo
+'ObjetoDecorado ..> Puerta :modelo
 ObjetoDecorado ..> Espejo :modelo
 
+
 class Espejo {
-    + PersonajeReflejado
+    + posicion
 }
-Espejo ..> Personaje :modelo
+Espejo o-- PersonajeReflejado
+
+class PersonajeReflejado{
+   + modelo
+}
+PersonajeReflejado ..> Personaje :modelo
 
 class Personaje {
     + posicion
@@ -57,7 +65,7 @@ class Personaje {
 }
 Personaje ..> Autor :modelo
 Personaje ..> Espectador :modelo
-Personaje ..> Personalidad :modelo
+Personaje *-- Papel
 class Espectador {
     + posicion
     + punto_de_vista
