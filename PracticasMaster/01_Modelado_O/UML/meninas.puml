@@ -14,58 +14,75 @@ Cuadro *-- Narrativa
 class Narrativa {
 
 }
-Narrativa <|-- Iconográfica
-Narrativa <|-- Iconológica
+Narrativa <|-- Denotativa
+Narrativa <|-- Descriptiva
 
-class Iconográfica {
-}
-Iconográfica o-- Papel
-
-class Papel {
-    Infanta,Menina,Pintor,Sirviente,Rey,Reina...
+class Descriptiva {
 }
 
-class Iconológica{
+class Denotativa {
+    + significado
 }
-Iconológica o-- Escena
+Denotativa o-- Rol
 
-class Escenario {
-    + planos
+class Rol {
+    Perro
+    Infanta
+    Menina
+    Pintor
+    Sirviente
+    Rey
+    Reina
+}
+
+class Descriptiva{
+}
+Descriptiva o-- Escena
+
+class Escena {
     + iluminación
-    + limites
-    + cuarta_pared
+    + limites: paredes, cuarta pared
 }
-Escena *-- Escenario
-Escenario o--"0..n" Personaje
-Escenario o--"0..n" ObjetoDecorado
+Escena o--"0..n" Decorado
+Escena *--"1..n" Plano
 
-class ObjetoDecorado {
+class Plano {
+    + posicion
+
+}
+Plano <|-- Primer
+Plano <|-- Secundario
+Plano <|-- Imaginario
+Plano o--"0..n" Personaje
+
+
+class Decorado {
    + posicion
    + modelo
 }
-ObjetoDecorado ..> Cuadro :modelo
-'ObjetoDecorado ..> Puerta :modelo
-ObjetoDecorado ..> Espejo :modelo
+Decorado <|-- Cuadro :modelo
+'Decorado ..> Puerta :modelo
+Decorado <|-- Espejo :modelo
 
 
 class Espejo {
     + posicion
 }
-Espejo o-- PersonajeReflejado
+Espejo o-- Reflejo
 
-class PersonajeReflejado{
+class Reflejo{
    + modelo
 }
-PersonajeReflejado ..> Personaje :modelo
+Reflejo <|-- Personaje :modelo
 
 class Personaje {
     + posicion
     + modelo
     + principal/secundario
 }
-Personaje ..> Autor :modelo
-Personaje ..> Espectador :modelo
-Personaje *-- Papel
+Personaje <|-- Autor :modelo
+Personaje <|-- Espectador :modelo
+Personaje *-- Rol
 class Espectador {
     + posicion
     + punto_de_vista
