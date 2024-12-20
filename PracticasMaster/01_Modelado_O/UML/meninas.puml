@@ -12,18 +12,16 @@ Cuadro o--"0..n" Espectador
 Cuadro *-- Narrativa
 
 class Narrativa {
-
 }
 Narrativa <|-- Denotativa
 Narrativa <|-- Descriptiva
 
-class Descriptiva {
-}
-
 class Denotativa {
-    + significado
+    + Rol
+    + Modelo
 }
-Denotativa o-- Rol
+'Denotativa o-- Rol
+'Denotativa o-- Modelo
 
 class Rol {
     Perro
@@ -41,29 +39,28 @@ Descriptiva o-- Escena
 
 class Escena {
     + iluminación
+    + acción: pintar un cuadro
     + limites: paredes, cuarta pared
 }
 Escena o--"0..n" Decorado
 Escena *--"1..n" Plano
+Escena o-- Espectador
 
 class Plano {
     + posicion
-
 }
 Plano <|-- Primer
 Plano <|-- Secundario
 Plano <|-- Imaginario
 Plano o--"0..n" Personaje
 
-
 class Decorado {
    + posicion
-   + modelo
 }
+'Decorado ..> Modelo
 Decorado <|-- Cuadro :modelo
-'Decorado ..> Puerta :modelo
 Decorado <|-- Espejo :modelo
-
+'Decorado ..> Puerta :modelo
 
 class Espejo {
     + posicion
@@ -71,24 +68,22 @@ class Espejo {
 Espejo o-- Reflejo
 
 class Reflejo{
-   + modelo
 }
 Reflejo <|-- Personaje :modelo
+'Reflejo ..> Modelo
 
 class Personaje {
     + posicion
-    + modelo
-    + principal/secundario
+    + observar(dirección)
 }
+'Personaje ..> Modelo
 Personaje <|-- Autor :modelo
 Personaje <|-- Espectador :modelo
+Personaje <|-- Protagonista :modelo
 Personaje *-- Rol
+
 class Espectador {
-    + posicion
-    + punto_de_vista
 }
 'Espectador <|-- Autor
-
-
 
 @end
