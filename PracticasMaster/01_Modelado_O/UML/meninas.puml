@@ -74,7 +74,7 @@ Reflejo <|-- Personaje :modelo
 
 class Personaje {
     + posicion
-    + observar(dirección)
+    + observar(otra_posicion)
 }
 'Personaje ..> Modelo
 Personaje <|-- Autor :modelo
