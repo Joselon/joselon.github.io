@@ -8,7 +8,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../style.css">
 </head>
-
+<style>
+  .cuadro {
+    width: 80%;
+  }
+  .uml {
+    width: 50%;
+  }
+  @media (max-width: 600px) {
+    .cuadro {
+        width: 40%;
+    }
+    .uml {
+        width: 25%;
+    }
+  }
+</style>
 <body>
     <div class="header">
         <h1><a href="/"><i class="fa fa-home"></i></a> Joselon Github IO</h1>
@@ -19,7 +34,7 @@
     <div id="definition">
         <h1>Modelar Cuadro de Las Meninas de Velázquez</h1>
         <p>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Las_Meninas_01.jpg/800px-Las_Meninas_01.jpg"
+            <img id="cuadro" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Las_Meninas_01.jpg/800px-Las_Meninas_01.jpg"
                 alt="Wikipedia Imagen: Las_Meninas_01">
         </p>
         <p><i><b>Las meninas</b></i> (como se conoce a esta obra desde el siglo&nbsp;<span
@@ -75,7 +90,7 @@
         <h2>Ejercicio de modelado 2: Propuesta <small>19/12/2024 00:00 UTC+0</small></h2>
 
         <div class="content2">
-            <img src="./diagrams/meninas/MeninasDomain.svg" alt="modelado">
+            <img id="uml" src="./diagrams/meninas/MeninasDomain.svg" alt="modelado">
         </div>
     </div>
 </body>
