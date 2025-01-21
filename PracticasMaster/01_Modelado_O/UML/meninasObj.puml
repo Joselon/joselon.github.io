@@ -1,0 +1,96 @@
+@startuml MeninasObj
+!theme reddress-darkred
+title Modelado Cuadro de las Meninas de Velázquez (Objetos)
+
+object Picture {
+    + Title: "La familia de Felipe IV"
+    + Year: 1656
+    + Size: Big
+    + Aesthetic: naturalistic
+    + Context: El Prado Museum
+    + exhibited: true
+}
+Picture *-- Author
+Picture o--"0..n" Viewer
+Picture *-- Descriptive
+Picture *-- Denotative
+
+object Author {
+   + name: Velázquez
+}
+
+object Denotative {
+    + Action: VelázquezPintandoUnCuadro...
+}
+Denotative *-- Role
+Denotative *-- Model
+
+enum Role {
+    Dog
+    Infanta
+    MaidOfHonor
+    Painter
+    Servant
+    King
+    Queen
+}
+
+object Descriptive {
+    + Action: painting a picture
+}
+Descriptive *-- Scene
+
+object Scene {
+    + lighting
+    + boundaries
+}
+Scene *-- Foreground
+Scene *-- Background
+Scene *--"2" Viewer
+Scene *-- Imaginary
+
+object Imaginary {
+    + Area:fourthWall
+}
+
+Foreground *-- Character1
+Background *-- Character2
+Background *-- Set1
+
+
+class Set {
+   + Position
+}
+'Set ..> Model
+Set ..> Picture :Model
+Set ..> Mirror :Model
+'Set ..> Door :Model
+
+class Mirror {
+}
+Mirror o-- Reflection
+
+class Reflection {
+}
+Reflection ..> Character :Model
+'Reflection ..> Model
+
+Character Author {
+    + Position
+    + observe(other_position)
+}
+object Character2 {
+    + Position
+    + observe(other_position)
+}
+'Character ..> Model
+Character ..> Author :Model
+Character ..> Viewer :Model
+Character ..> Protagonist :Model
+Character *-- Role
+
+class Viewer {
+}
+'Viewer <|-- Author
+
+@end

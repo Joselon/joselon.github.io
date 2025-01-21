@@ -3,15 +3,17 @@
 title Modelado Cuadro de las Meninas de Velázquez
 
 class Picture {
-    + title, year, size...
-    + aesthetic: naturalistic
-    + exhibited: context
+    + Title, Year, Size...
+    + Aesthetic: naturalistic
+    + Context
+    + boolean exhibited
 }
 Picture *-- Author
 Picture o--"0..n" Viewer
 Picture *-- Narrative
 
-class Narrative {
+abstract class Narrative {
+    + Action
 }
 Narrative <|-- Denotative
 Narrative <|-- Descriptive
@@ -23,10 +25,10 @@ class Denotative {
 'Denotative o-- Role
 'Denotative o-- Model
 
-class Role {
+enum Role {
     Dog
     Infanta
-    Maid of Honor
+    MaidOfHonor
     Painter
     Servant
     King
@@ -38,47 +40,52 @@ class Descriptive {
 Descriptive o-- Scene
 
 class Scene {
-    + action: painting a picture
     + lighting
     + boundaries
 }
-Scene *--"1..n" Shot
+Scene *--"1..n" Ground
 Scene o-- Viewer
 
-class Shot {
-    + position
+class Ground {
+    + Area
 }
-Shot <|-- Primary
-Shot <|-- Secondary
-Shot <|-- Imaginary
-Shot o--"0..n" Character
-Shot o--"0..n" Set
+Ground <|-- Foreground
+Ground <|-- Background
+Ground <|-- Imaginary
+
+class Imaginary {
+    + Area: outOfBoundaries/fourth wall
+}
+
+Ground o--"0..n" Character
+Ground o--"0..n" Set
+
+
 class Set {
-   + position
+   + Position
 }
 'Set ..> Model
-Set ..> Picture :model
-Set ..> Mirror :model
+Set ..> Picture :Model
+Set ..> Mirror :Model
 'Set ..> Door :model
 
 class Mirror {
-    + position
 }
 Mirror o-- Reflection
 
 class Reflection {
 }
-Reflection ..> Character :model
+Reflection ..> Character :Model
 'Reflection ..> Model
 
 class Character {
-    + position
+    + Position
     + observe(other_position)
 }
 'Character ..> Model
-Character ..> Author :model
-Character ..> Viewer :model
-Character ..> Protagonist :model
+Character ..> Author :Model
+Character ..> Viewer :Model
+Character ..> Protagonist :Model
 Character *-- Role
 
 class Viewer {
