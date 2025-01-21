@@ -2,88 +2,87 @@
 !theme reddress-darkred
 title Modelado Cuadro de las Meninas de Velázquez
 
-class Cuadro {
-    + titulo,año,tamaño...
-    + estética: naturalista
-    + expuesto: contexto
+class Picture {
+    + title, year, size...
+    + aesthetic: naturalistic
+    + exhibited: context
 }
-Cuadro *-- Autor
-Cuadro o--"0..n" Espectador
-Cuadro *-- Narrativa
+Picture *-- Author
+Picture o--"0..n" Viewer
+Picture *-- Narrative
 
-class Narrativa {
+class Narrative {
 }
-Narrativa <|-- Denotativa
-Narrativa <|-- Descriptiva
+Narrative <|-- Denotative
+Narrative <|-- Descriptive
 
-class Denotativa {
-    + Rol
-    + Modelo
+class Denotative {
+    + Role
+    + Model
 }
-'Denotativa o-- Rol
-'Denotativa o-- Modelo
+'Denotative o-- Role
+'Denotative o-- Model
 
-class Rol {
-    Perro
+class Role {
+    Dog
     Infanta
-    Menina
-    Pintor
-    Sirviente
-    Rey
-    Reina
+    Maid of Honor
+    Painter
+    Servant
+    King
+    Queen
 }
 
-class Descriptiva{
+class Descriptive {
 }
-Descriptiva o-- Escena
+Descriptive o-- Scene
 
-class Escena {
-    + iluminación
-    + acción: pintar un cuadro
-    + limites: paredes, cuarta pared
+class Scene {
+    + action: painting a picture
+    + lighting
+    + boundaries
 }
-Escena o--"0..n" Decorado
-Escena *--"1..n" Plano
-Escena o-- Espectador
+Scene *--"1..n" Shot
+Scene o-- Viewer
 
-class Plano {
-    + posicion
+class Shot {
+    + position
 }
-Plano <|-- Primer
-Plano <|-- Secundario
-Plano <|-- Imaginario
-Plano o--"0..n" Personaje
+Shot <|-- Primary
+Shot <|-- Secondary
+Shot <|-- Imaginary
+Shot o--"0..n" Character
+Shot o--"0..n" Set
+class Set {
+   + position
+}
+'Set ..> Model
+Set ..> Picture :model
+Set ..> Mirror :model
+'Set ..> Door :model
 
-class Decorado {
-   + posicion
+class Mirror {
+    + position
 }
-'Decorado ..> Modelo
-Decorado <|-- Cuadro :modelo
-Decorado <|-- Espejo :modelo
-'Decorado ..> Puerta :modelo
+Mirror o-- Reflection
 
-class Espejo {
-    + posicion
+class Reflection {
 }
-Espejo o-- Reflejo
+Reflection ..> Character :model
+'Reflection ..> Model
 
-class Reflejo{
+class Character {
+    + position
+    + observe(other_position)
 }
-Reflejo <|-- Personaje :modelo
-'Reflejo ..> Modelo
+'Character ..> Model
+Character ..> Author :model
+Character ..> Viewer :model
+Character ..> Protagonist :model
+Character *-- Role
 
-class Personaje {
-    + posicion
-    + observar(otra_posicion)
+class Viewer {
 }
-'Personaje ..> Modelo
-Personaje <|-- Autor :modelo
-Personaje <|-- Espectador :modelo
-Personaje <|-- Protagonista :modelo
-Personaje *-- Rol
-
-class Espectador {
-}
-'Espectador <|-- Autor
+'Viewer <|-- Author
 
 @end
