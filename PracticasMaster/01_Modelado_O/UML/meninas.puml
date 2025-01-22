@@ -1,12 +1,12 @@
 @startuml MeninasDomain
 !theme reddress-darkred
-title Modelado Cuadro de las Meninas de Velázquez
+title Diagrama de Clases de un Cuadro Naturalista
 
 class Picture {
     + Title, Year, Size...
     + Aesthetic: naturalistic
     + Context
-    + boolean exhibited
+    + Exhibited
 }
 Picture *-- Author
 Picture o--"0..n" Viewer
@@ -19,32 +19,20 @@ Narrative <|-- Denotative
 Narrative <|-- Descriptive
 
 class Denotative {
-    + Role
-    + Model
 }
-'Denotative o-- Role
-'Denotative o-- Model
 
-enum Role {
-    Dog
-    Infanta
-    MaidOfHonor
-    Painter
-    Servant
-    King
-    Queen
-}
+Denotative *-- Role
+Denotative *-- Model
 
 class Descriptive {
 }
-Descriptive o-- Scene
+Descriptive *-- Scene
 
 class Scene {
     + lighting
     + boundaries
 }
 Scene *--"1..n" Ground
-Scene o-- Viewer
 
 class Ground {
     + Area
@@ -53,43 +41,23 @@ Ground <|-- Foreground
 Ground <|-- Background
 Ground <|-- Imaginary
 
-class Imaginary {
-    + Area: outOfBoundaries/fourth wall
-}
-
 Ground o--"0..n" Character
-Ground o--"0..n" Set
+Ground o--"0..n" SetElement
 
 
-class Set {
+class SetElement {
    + Position
 }
-'Set ..> Model
-Set ..> Picture :Model
-Set ..> Mirror :Model
-'Set ..> Door :model
-
-class Mirror {
-}
-Mirror o-- Reflection
-
-class Reflection {
-}
-Reflection ..> Character :Model
-'Reflection ..> Model
 
 class Character {
     + Position
-    + observe(other_position)
+    + toObserve(other_position)
 }
-'Character ..> Model
-Character ..> Author :Model
-Character ..> Viewer :Model
-Character ..> Protagonist :Model
-Character *-- Role
+Character ..> Model
+Character ..> Role
+SetElement ..> Model
 
 class Viewer {
 }
-'Viewer <|-- Author
 
 @end

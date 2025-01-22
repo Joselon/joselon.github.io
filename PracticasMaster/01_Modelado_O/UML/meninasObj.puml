@@ -1,29 +1,39 @@
 @startuml MeninasObj
+
 !theme reddress-darkred
-title Modelado Cuadro de las Meninas de Velázquez (Objetos)
 
-object Picture {
-    + Title: "La familia de Felipe IV"
-    + Year: 1656
-    + Size: Big
-    + Aesthetic: naturalistic
-    + Context: El Prado Museum
-    + exhibited: true
+title Diagrama de Objetos Cuadro de las Meninas de Velázquez (Objetos)
+
+object picture{
+    + title = "La familia de Felipe IV"
+    + year = 1656
+    + size = Big
+    + aesthetic = naturalistic
+    + context
+    + exhibited = El Prado Museum
 }
-Picture *-- Author
-Picture o--"0..n" Viewer
-Picture *-- Descriptive
-Picture *-- Denotative
-
-object Author {
+object author{
    + name: Velázquez
 }
 
-object Denotative {
-    + Action: VelázquezPintandoUnCuadro...
+object viewer <<PictureViewer>> {
 }
-Denotative *-- Role
-Denotative *-- Model
+
+object denotative  <<Narrative>>{
+    + Action = retrato de la infanta Margarita Teresa de Austria...
+}
+object descriptive <<Narrative>>{
+    + Action = painting a picture
+}
+
+picture *-- author
+picture o--"0..n" viewer
+picture *-- descriptive
+picture *-- denotative
+denotative ..> viewer
+
+denotative *-- Model
+denotative *-- Role
 
 enum Role {
     Dog
@@ -35,62 +45,119 @@ enum Role {
     Queen
 }
 
-object Descriptive {
-    + Action: painting a picture
+enum Model {
+    Margarita Teresa de Austria
+    Velázquez
+    Felipe IV
+    Mariana de Austria
+    ...
 }
-Descriptive *-- Scene
 
-object Scene {
+object scene {
     + lighting
     + boundaries
 }
-Scene *-- Foreground
-Scene *-- Background
-Scene *--"2" Viewer
-Scene *-- Imaginary
 
-object Imaginary {
-    + Area:fourthWall
+object foreground {
+}
+object background {
+    area: nextToForeground
+}
+object background2 {
+    area: nextToBackground
+}
+object imaginary {
+    + area = fourthWall
 }
 
-Foreground *-- Character1
-Background *-- Character2
-Background *-- Set1
+object characterDog {
+    + position = firstOnForegroundArea
+    + model = homeDog
+    + role = dog
+    + observe(position_on_ground)
+   
+}
+
+object characterProtagonist {
+    + position = centerOFForegroundArea
+    + model = infanta Margarita Teresa de Austria
+    + role = infanta
+    + observe(OutOfBoundaries)
+   
+}
+
+object characterLeftOnReflection {
+    + position = onMirror
+    + observe(characterProtagonist.position)
+}
+object characterRightOnReflection {
+    + position = onMirror
+    + observe(characterProtagonist.position)
+
+}
+
+object characterKing <<SceneViewer>>{
+    + position = onImaginaryAreaOnTheLeft
+    + model = Felipe IV
+    + role = king
+    + observe(characterProtagonist.position)
+   
+}
+object characterQueen <<SceneViewer>>{
+    + position = onImaginaryAreaOnTheRight
+    + model = Mariana de Austria
+    + role = queen
+    + observe(characterProtagonist.position)
+   
+}
+
+object characterPainter {
+    + position = onBackground
+    + role = painter
+    + observe(mirrorOutOfBoundaries)
+   
+}
+object characterSecundary {
+    + position = onBackground
+    + role = MaidOfHonor, Servant
+    + observe(mirrorOutOfBoundaries)
+   
+}
+
+descriptive *-- scene
+
+scene *-- foreground
+scene *-- background
+scene *-- background2
+scene *-- imaginary
+
+object setElementMirror {
+    model: Mirror
+}
+object setElementPicture {
+    model: BigPicture
+}
+
+foreground *-- characterProtagonist
+foreground *-- characterDog
+background *-- characterPainter
+background *-- setElementMirror
+background *-- setElementPicture
+background2 *-- "n" characterSecundary
+imaginary *-- characterKing
+imaginary *-- characterQueen
 
 
-class Set {
-   + Position
-}
-'Set ..> Model
-Set ..> Picture :Model
-Set ..> Mirror :Model
-'Set ..> Door :Model
+characterPainter ..> setElementPicture
 
-class Mirror {
-}
-Mirror o-- Reflection
+setElementMirror *-- characterLeftOnReflection
+setElementMirror *-- characterRightOnReflection
 
-class Reflection {
-}
-Reflection ..> Character :Model
-'Reflection ..> Model
 
-Character Author {
-    + Position
-    + observe(other_position)
-}
-object Character2 {
-    + Position
-    + observe(other_position)
-}
-'Character ..> Model
-Character ..> Author :Model
-Character ..> Viewer :Model
-Character ..> Protagonist :Model
-Character *-- Role
+characterRightOnReflection ..> characterKing :model
+characterLeftOnReflection ..> characterQueen :model
 
-class Viewer {
-}
-'Viewer <|-- Author
+characterPainter ..> author :model
+
 
 @end
