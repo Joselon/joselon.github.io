@@ -1,0 +1,43 @@
+@startuml PrimeNumber
+
+!theme reddress-darkred
+title Modelado Numeros Primos
+
+class Prime{
+ 
+}
+
+class Natural {
+
+}
+
+
+class Integer {
+    isPositive()
+    isDivisible(Integer)
+}
+
+class Number {
+    base: 10
+    getIntegerPart()
+    getFractionalPart()
+}
+
+Number <|-- Integer : [n.getFractionPart()=0]
+Integer <|-- Natural : [n.isPositive=True]
+Natural <|-- Prime : [n.isDivisible(m<n & (m!=1 | m!=n))=False]
+
+
+'Padre <|-down- Hija : Herencia
+'AbstractInterfaz <|.. Concreta : Implementacion ?
+'Todo "1" *-up- "many" Parte: Composition
+' o-- Agregacion
+' ..> Uso
+'-			private
+'#			protected
+'~			package private
+'+			public
+
+' help theme
+
+@end
