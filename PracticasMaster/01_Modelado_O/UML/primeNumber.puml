@@ -23,9 +23,9 @@ class Number {
     getFractionalPart()
 }
 
-Number <|-- Integer : [n.getFractionPart()=0]
-Integer <|-- Natural : [n.isPositive=True]
-Natural <|-- Prime : [n.isDivisible(m<n & (m!=1 | m!=n))=False]
+Number *-- Integer : [n.getFractionPart()=0]
+Integer *-- Natural : [n.isPositive()=True]
+Natural *-- Prime : [n.isDivisible(m<n & (m!=1 | m!=n))=False]
 
 
 'Padre <|-down- Hija : Herencia
