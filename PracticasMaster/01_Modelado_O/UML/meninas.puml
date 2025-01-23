@@ -9,7 +9,7 @@ class Picture {
     + Exhibited
 }
 Picture *-- Author
-Picture o--"0..n" Viewer
+Picture o--"0..n" PictureViewer
 Picture *-- Narrative
 
 abstract class Narrative {
@@ -56,8 +56,13 @@ class Character {
 Character ..> Model
 Character ..> Role
 SetElement ..> Model
+Character <|-- SceneViewer
 
-class Viewer {
+abstract class Viewer {
+    Position
 }
+Viewer <|-- SceneViewer
+Viewer <|-- PictureViewer
+
 
 @end

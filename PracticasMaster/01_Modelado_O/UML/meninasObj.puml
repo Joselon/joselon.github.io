@@ -16,7 +16,8 @@ object author{
    + name: Velázquez
 }
 
-object viewer <<PictureViewer>> {
+object pictureViewer <<Viewer>> {
+    position: onKingsPositionOnImaginaryArea
 }
 
 object denotative  <<Narrative>>{
@@ -27,19 +28,19 @@ object descriptive <<Narrative>>{
 }
 
 picture *-- author
-picture o--"0..n" viewer
+picture o--"0..n" pictureViewer
 picture *-- descriptive
 picture *-- denotative
-denotative ..> viewer
+denotative ..> pictureViewer
 
 denotative *-- Model
 denotative *-- Role
 
 enum Role {
     Dog
-    Infanta
-    MaidOfHonor
+    Protagonist
     Painter
+    MaidOfHonor
     Servant
     King
     Queen
@@ -63,7 +64,7 @@ object foreground {
 object background {
     area: nextToForeground
 }
-object background2 {
+object rearbackground {
     area: nextToBackground
 }
 object imaginary {
@@ -80,9 +81,9 @@ object characterDog {
 
 object characterProtagonist {
     + position = centerOFForegroundArea
-    + model = infanta Margarita Teresa de Austria
+    + model = Margarita Teresa de Austria
     + role = infanta
-    + observe(OutOfBoundaries)
+    + observe(positionOnImaginaryArea)
    
 }
 
@@ -96,39 +97,38 @@ object characterRightOnReflection {
 
 }
 
-object characterKing <<SceneViewer>>{
+object characterKing <<Viewer>>{
     + position = onImaginaryAreaOnTheLeft
     + model = Felipe IV
     + role = king
-    + observe(characterProtagonist.position)
+    + observe(scene.position)
    
 }
-object characterQueen <<SceneViewer>>{
+object characterQueen <<Viewer>>{
     + position = onImaginaryAreaOnTheRight
     + model = Mariana de Austria
     + role = queen
-    + observe(characterProtagonist.position)
+    + observe(scene.position)
    
 }
 
 object characterPainter {
     + position = onBackground
     + role = painter
-    + observe(mirrorOutOfBoundaries)
+    + observe(positionOnImaginaryArea)
    
 }
 object characterSecundary {
     + position = onBackground
     + role = MaidOfHonor, Servant
-    + observe(mirrorOutOfBoundaries)
-   
+    + observe(positionOnImaginaryArea)
 }
 
 descriptive *-- scene
 
 scene *-- foreground
 scene *-- background
-scene *-- background2
+scene *-- rearbackground
 scene *-- imaginary
 
 object setElementMirror {
@@ -143,10 +143,9 @@ foreground *-- characterDog
 background *-- characterPainter
 background *-- setElementMirror
 background *-- setElementPicture
-background2 *-- "n" characterSecundary
+rearbackground *-- "n" characterSecundary
 imaginary *-- characterKing
 imaginary *-- characterQueen
-
 
 characterPainter ..> setElementPicture
 
@@ -158,6 +157,8 @@ characterRightOnReflection ..> characterKing :model
 characterLeftOnReflection ..> characterQueen :model
 
 characterPainter ..> author :model
+pictureViewer ..> characterQueen :position
+pictureViewer ..> characterKing :position
 
 
 @end
