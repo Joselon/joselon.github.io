@@ -1,7 +1,7 @@
 @startuml PrimeNumber
 
 !theme reddress-darkred
-title Modelado Numeros Primos
+title Modelado Numeros Primos <size:32><&calculator></size>
 
 class Prime{
  
@@ -17,13 +17,13 @@ class Integer {
     isDivisible(Integer)
 }
 
-class Number {
+class RealNumber {
     base: 10
     getIntegerPart()
     getFractionalPart()
 }
 
-Number *-- Integer : [n.getFractionPart()=0]
+RealNumber *-- Integer : [n.getFractionPart()=0]
 Integer *-- Natural : [n.isPositive()=True]
 Natural *-- Prime : [n.isDivisible(m<n & (m!=1 | m!=n))=False]
 
