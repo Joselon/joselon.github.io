@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Practicas Master EscuelaIT: Plataforma Formación</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<style>
+    #uml {
+        width: 90%;
+    }
+</style>
+
+<body>
+    <div class="header">
+        <h1><a href="/"><i class="fa fa-home"></i></a> Joselon Github IO</h1>
+        <h2>Practicas Master Escuela IT</h2>
+        <a href="https://escuela.it/" target="_blank"><img src="imagen-curso-master-ingenieria-peque.jpg" height="225"
+                width="414" alt="MasterLogo"></a>
+    </div>
+    <div id="definition">
+        <h1>Modelar Propuesta de Plataforma de Formación</h1>
+        <p>
+           Cliente: Quiero una plataforma de formación diferente a las existentes. Por ejemplo:
+           En el temario del master vemos que está organizado por bloques con indices y
+           que cada punto tiene un enlace que te lleva al <b>momento</b> exacto (minuto y segundo)
+           del video de la clase donde se explica. 
+           Observando otro indice vemos que hay relaciones entre puntos de los indices.
+        </p>
+        <p> 
+            Está todo atomizado. Cada bloque tiene cursos, cada curso tiene <b>módulos</b>. 
+            Cada <b>apartado</b> debería tener un video diferente de 5-10 minutos. 
+            Si el apartado fuera muy grande, se partiría en dos o tres videos. 
+            Todas las unidades de teoría están organizadas de forma sistemática de manera en que cada sitio 
+            se cumplen los principios de modelado del dominio, de diseño y de información que hemos hablado.  
+            Los 18 principios. Cada apartado de teoría debería ser un módulo, formando una unidad 
+            (principio de cohesión) que tiene pocos elementos de los que depende, porque un apartado se divide 
+            como mucho en 7 apartados.
+        </p>
+        <p>
+            QUIERO QUE ME AYUDES A GESTIONAR UNA JERARQUÍA DE CONTENIDOS. 
+        </p>
+        <p>
+            Que pueda ir añadiendo nuevos elementos y que al añadir se reenumeran todos los indices automáticamente. 
+            Que a esos elementos les pueda añadir contenido: vídeo, podcast (solo sonido), multimedia... 
+            Que pueda mover, quitar, meter (CRUD) por un lado. Cada contenido corresponde a un concepto, a un apartado.
+        </p>
+        <p>
+            POR OTRO LADO QUIERO UNA JERARQUÍA DE EJERCICIOS.
+        </p>
+        <p>
+            Quiero que me ayudes a gestionar una plataforma de software con distinos <b>dominios</b>, con distintos 
+            enunciados, quiero que haya categorías, una jerarquía con diferentes niveles, si son más grandes o 
+            más pequeños. Dominios: juegos, gestores, miscelaneas, etc. Tener muy claro cuáles son y cómo se llaman. 
+            De cada ejercicio quiero contemplar <b>evoluciones</b>. De forma que haya un enunciado y de repente 
+            tenga un segundo enunciado que añade, o modifica o quita. Una evolución en la que van cambiado los 
+            requisitos. Quiero que me ayudes a gestionar esto, a incorporar una nueva versión a una serie de versiones 
+            en un punto intermedio o final de un cierto ejercicio (de un cierto dominio).
+        </p>
+        <p>
+            Quiero que me ayudes a que cuando estoy dando una determinada unidad de teoría, y hay ejercicios que ya 
+            puedo hacer con esa teoría, pueda gestionar todos estos enlaces. Que en ese ejercicio puedo ver el enunciado 
+            y tengo un hueco para que pueda añadir una solución al ejercicio. Y que cuando mire una unidad de teoría pueda 
+            ver todos los ejercicios que se han resuelto en esa unidad.
+            Y que cuando mire un ejercicio pueda ver con cuántas distintas unidades se relacionan. Por ejemplo con 
+            cuántos lenguajes se ha resuelto ese ejercicio.
+        </p>
+        <p>
+            Porque como cliente quiero que cuando un estudiante llegue a un ejercicio pueda ver distintas soluciones 
+            y compararlos y aprender con la comparación.
+        </p>
+        <p>
+            POR OTRO LADO:
+        </p>
+        <p>
+            Cuando meto contenido, sobretodo texto, se meteran muchas definiciones, y me gustaría que estuvieran
+            en un marco para que estuviera muy claro que es definición y que no. Cuando se añadan definiciones 
+            según escribo el texto me gustaría marcarlo de alguna manera para que el sistema lo guardara de alguna 
+            manera para que luego lo use con una especie de chat que emule a tu madre preguntando la lección.
+        </p>
+        <p>
+            MADRE: Sistema de tarjetas para preguntar conceptos de muchas maneras.
+        </p>
+        <p>
+            Te va preguntando de lo fácil a lo dificil. Te puede dar una descripción y preguntarte por el concepto.
+            Te puede dar palabras de ese mismo dominio, para que elijas cuál es la correcta.
+            Me gustaría que el sistema calculara la importancia de cada palabra. Porque si esas palabras están en muchos 
+            conceptos podemos suprimirlas y ver como completarlas y cambiarlas.
+        </p>
+        <p>
+            Como alumno puedes completarlas. Como profesor se pueden aceptar o no, al corregirlas se pueden añadir.
+            Me gustaría que el sistema con unos pequeños filtros se pudieran borrar respuestas que no hace falta corregir.
+            Insultos, etc. Pero hay respuestas raras que interesan para incorporar a la base de conocimiento.
+            Tendré definiciones buenas y malas para el siguiente conjunto de alumnos.
+            Quiero que los alumnos se sometan a este chat y que el sistema guarde esa información para en un futuro 
+            meter inteligencia artifical con esta información pueda generar algo en un momento dado.
+        </p>
+        <p>
+            Me gustaría tener el perfil de un alumno y que el sistema me dijera que tipo de respuestas me ha dado 
+            para valorar a este alumno.
+        </p>
+        <p>
+            Quiero que el sistema me permita hacer <b>itinerarios</b>. Marcando puntos del indice que quiero estudiar, 
+            que se reordenen según dependencias entre unidades. Si no hay dependencias permitimos que se cambie 
+            el orden. Si no, que no lo permita. Pero que pueda activar y desactivar ese bloqueo si los alumnos ya 
+            lo saben.
+        </p>
+        <p>
+            Luego puede llegar un profesor y según su forma de enseñar, si prefiere enseñar primero un ejercicio...
+            Que pueda definir otro itinerario. Que pueda reducir incluso las horas que se dedican a cada punto, incluso 
+            añadir puntos.
+        </p>
+        <p>
+            Los alumnos pueden acceder a este sistema y navegar por estos indices y cuando se subscriben a un itinerario 
+            el sistema les ayuda a ponerse en un punto por el que van, con estadísticas, con porcentajes, con el chat y 
+            decirte cositas cortas, resultados, etc.
+        </p>
+        <p>
+            A partir de esto podemos establecer nivel de dificultad sobre las preguntas. Sacar un montón de indices, 
+            de medidas con el que el profesor pueda también evaluarse según los resultados de sus alumnos.
+            En mi batería de preguntas y respuestas puedo detectar también que <b>tipo de alumno</b> es. Según se parezcan sus 
+            respuestas a otras que tengo guardadas. Se pueden hacer miles de historias con este sistema.
+        </p>
+        <p>
+            Si este sistema me permite que los conceptos estén relacionados, me permite que el chat pregunte de miles
+            de maneras. Que ponga varias relaciones y quite y pregunte cuales faltan, que te pida las relacionadas, etc.
+        </p>
+        <p>
+            También me gustaría que el alumno pueda estuidar comparando soluciones y decidir cuales son buenas o 
+            malas e identificar si son malas que principio violan por ejemplo, la justificación.
+        </p>
+        <div id="citacion">
+            <h4>Fuentes:</h4>
+            <p>EscuelaIT:
+                <a href="https://escuela.it/cursos/curso-modelado-orientado-objetos/clase/clase-8#3624-5065">Video clase 8: Enunciado</a>
+            </p>
+            <p>Sistema de estudiantes de Medicina:
+                <a href="https://apps.ankiweb.net/docs/manual.es.html">Manual del Usuario para Anki 2.0</a>
+            </p>
+        </div>
+
+        <h2>Propuesta <small>01/02/2025</small></h2>
+        <p>Modelado de Plataforma</p>
+        <div class="content2">
+            <a href="./diagrams/plataformaFormacion/dominio.svg"><img id="uml" src="./diagrams/plataformaFormacion/dominio.svg"
+                    alt="modeladoClases"></a>
+        </div>
+
+    </div>
+</body>
+
+</html>
