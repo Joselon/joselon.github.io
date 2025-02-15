@@ -1,0 +1,115 @@
+@startuml EducationPlatformDomain
+
+interface Itinerary {
+    - Session
+}
+
+interface Topic{
+    + getTableOfContents()
+    + getSyllabus() : Concepts
+    + Edit()
+    + Read()
+}
+
+
+class SimpleTopic{
+}
+
+class CompositeTopic{
+    - topics : List<Topic> 
+}
+
+class Application_Exercise {
+    - Version
+}
+
+class Solution_Application {
+    - Version :Poemary
+    - Justification
+    isCorrect()
+}
+
+class Document {
+    - TableOfContents
+}
+
+class Concept {
+    - isAskable()
+}
+
+class Definition {
+    - isFake()
+}
+
+class Justification {
+    - isFake()
+}
+
+class Relation {
+
+}
+
+EducationPlatform *--> "+" Teacher
+EducationPlatform *--> "+" Student
+EducationPlatform *--> Topic
+EducationPlatform o--> "+" Itinerary
+EducationPlatform o--> Asker
+EducationPlatform o--> Application_Exercise
+
+Asker ..>"*" Application_Exercise
+Asker...> Student
+Student...> Asker :Chat
+
+Application_Exercise o--> Topic:Domain
+Application_Exercise <|-- Question
+Application_Exercise <|-- Practical
+Application_Exercise *--> Statement
+Application_Exercise *--> Solution_Application
+
+Question -->"*" Concept 
+
+Teacher ..> Topic : Editor
+Teacher ..> Predefined : Editor
+Student ...> Topic : Reader
+Student ...> Custom : Editor
+
+
+Topic <|.. CompositeTopic
+Topic <|.. SimpleTopic
+CompositeTopic o--> "+" Topic
+
+Itinerary <|-- Custom
+Itinerary <|-- Predefined
+
+Custom o--> "1..n" Topic
+Predefined o--> "*" Topic
+
+
+SimpleTopic o--> "+" Concept
+SimpleTopic o--> "+" Multimedia
+Concept *--> "+" Definition
+Definition o--> "*" Relation
+Relation <|-- Use
+Relation <|-- Association
+Relation <|-- Agregation
+Relation <|-- Composition
+Relation <|-- Inheritance
+
+Relation -->"+" Concept
+Definition o-->"+" Justification
+Justification o-->"+" Justification
+
+
+Multimedia <|-- Podcast
+Multimedia <|-- Video
+
+Podcast o--> Document : transcript
+Video o--> Document : transcript
+
+Multimedia <|-- Document
+
+Document *-->"*" Concept
+Document o-->"*" Image
+
+
+@enduml
