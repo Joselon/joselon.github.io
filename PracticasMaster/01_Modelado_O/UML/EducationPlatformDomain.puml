@@ -1,7 +1,7 @@
 @startuml EducationPlatformDomain
 
 abstract Itinerary {
-    - Session
+    - Edition
 }
 
 interface Topic{
@@ -19,14 +19,16 @@ class CompositeTopic{
     - topics : List<Topic> 
 }
 
-class Application_Exercise {
+class Excercise {
+    - Version :Prototype
+}
+
+class Solution {
     - Version
 }
 
-class Solution_Application {
-    - Version :Poemary
-    - Justification
-    isCorrect()
+class Incorrect {
+- Justification
 }
 
 class Document {
@@ -54,19 +56,25 @@ EducationPlatform *--> "+" Student
 EducationPlatform *--> Topic
 EducationPlatform o--> "+" Itinerary
 EducationPlatform o--> Asker
-EducationPlatform o--> Application_Exercise
+EducationPlatform o--> Excercise
 
-Asker ..>"*" Application_Exercise
+Asker ..>"*" Excercise
 Asker...> Student
 Student...> Asker :Chat
+ 
+Excercise <|-- Domain
+Domain *--> Application
+Domain *--> Requirement
+Application --> Topic
+Excercise <|-- Question
+'Excercise *--> Statement
+Application o-->"n" Solution
+Solution <|-- Correct
+Solution <|-- Incorrect
 
-Application_Exercise o--> Topic:Domain
-Application_Exercise <|-- Question
-Application_Exercise <|-- Practical
-Application_Exercise *--> Statement
-Application_Exercise *--> Solution_Application
+Question -->"*" Concept
+Question -->"*" Solution 
 
-Question -->"*" Concept 
 
 Teacher ..> Topic : Editor
 Teacher ..> Predefined : Editor
