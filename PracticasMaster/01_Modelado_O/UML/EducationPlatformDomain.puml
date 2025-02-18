@@ -20,15 +20,28 @@ class CompositeTopic{
 }
 
 class Excercise {
-    - Version :Prototype
 }
 
-class Solution {
+class Domain {
+}
+
+class Application {
     - Version
 }
 
 class Incorrect {
-- Justification
+    - Justification
+}
+
+class Question {
+
+}
+
+enum Statement {
+    ClozeTest
+    Definition
+    Relation
+    JustifyApplication
 }
 
 class Document {
@@ -36,50 +49,60 @@ class Document {
 }
 
 class Concept {
-    - isAskable()
 }
 
 class Definition {
-    - isFake()
+    - isFalse()
 }
 
 class Justification {
-    - isFake()
+    - isFalse()
 }
 
 class Relation {
 
 }
 
+class Multimedia {
+
+}
+note left of Multimedia
+¿Asociar a otros temas?
+end note
+
 EducationPlatform *--> "+" Teacher
 EducationPlatform *--> "+" Student
 EducationPlatform *--> Topic
 EducationPlatform o--> "+" Itinerary
-EducationPlatform o--> Asker
-EducationPlatform o--> Excercise
+EducationPlatform o--> Chat
+EducationPlatform o--> "+" Excercise
 
-Asker ..>"*" Excercise
-Asker...> Student
-Student...> Asker :Chat
- 
+Chat ..>"*" Excercise
+Student <..> Chat : topic
+
 Excercise <|-- Domain
-Domain *--> Application
-Domain *--> Requirement
-Application --> Topic
-Excercise <|-- Question
-'Excercise *--> Statement
-Application o-->"n" Solution
-Solution <|-- Correct
-Solution <|-- Incorrect
+Excercise <|-- Question 
 
-Question -->"*" Concept
-Question -->"*" Solution 
+Domain *-->"*" Application: requirements
+Application -->"+" Concept
 
+Application <|-- Correct
+Application <|-- Incorrect
 
-Teacher ..> Topic : Editor
-Teacher ..> Predefined : Editor
-Student ...> Topic : Reader
-Student ...> Custom : Editor
+Question -->"+" Concept
+Question -->"*" Application
+
+Question *--> Statement
+Question *--> Answer
+Answer <|-- Open
+Answer <|-- MultipleChoice
+
+'Teacher ..> Open : review
+
+Teacher ..> Topic : editor
+Teacher ..> Predefined : editor
+Student ...> Itinerary : reader
+Student ...> Custom : editor
 
 
 Topic <|.. CompositeTopic
@@ -89,19 +112,22 @@ CompositeTopic o--> "+" Topic
 Itinerary <|-- Custom
 Itinerary <|-- Predefined
 
-Custom o--> "1..n" Topic
-Predefined o--> "*" Topic
+Itinerary o--> "+" Topic
+'Predefined o--> "+" Topic
 
 
 SimpleTopic o--> "+" Concept
 SimpleTopic o--> "+" Multimedia
 Concept *--> "+" Definition
-Definition o--> "*" Relation
-Relation <|-- Use
-Relation <|-- Association
-Relation <|-- Agregation
-Relation <|-- Composition
-Relation <|-- Inheritance
+Concept o--> "*" Relation
+
+enum Relation {
+    Use
+    Association
+    Composition
+    Inheritance
+    Aggregation
+} 
 
 Relation -->"+" Concept
 Definition o-->"+" Justification
@@ -117,7 +143,5 @@ Video o--> Document : transcript
 Multimedia <|-- Document
 
 Document *-->"*" Concept
-Document o-->"*" Image
-
 
 @enduml
